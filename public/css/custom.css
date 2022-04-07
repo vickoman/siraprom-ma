@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+body{
+  background: #BFB5C1;
+  font-family: 'Lato';
+}
+#app {
+  padding: 20px 90px;
+}
+/* login */ 
+.bg_login{
+  background: url(https://twm.ec/wp-content/uploads/2021/11/TWM-BG1-1024x768-1.jpg);
+  background-size: cover !important;
+  color: #fff;
+height: 80vh;
+text-align: center;
+}
+.bg_login form{
+  text-align: left;
+}
+.login_left {
+  background: #fff;
+  text-align: center;
+}
+.login_left h4{
+  margin-top: 30px;
+  font-weight: 300;
+  font-style: italic;
+}
+h2 {
+  font-weight: bolder;
+  margin: 10px 0;
+}
+.navbar-brand img {
+  height: 30px;
+}
+.h_80.container.d-flex.align-items-center {
+  height: 88vh; 
+}
+/* login */
