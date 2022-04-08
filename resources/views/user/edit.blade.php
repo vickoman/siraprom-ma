@@ -19,25 +19,37 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action="/users/{{ $user->id }}">
-                        <input name="_method" type="hidden" value="PUT"/>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <div class="form-group">
-                            <label for="nombres">Nombres:</label>
-                            <input type="text" placeholder="Inserta los nombres" name="name" id="name" value="{{ $user->name }}" class="form-control" />
+                    {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+                            <div class="form-group">
+                                <strong>Name:</strong>
+                                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" placeholder="Email" name="email" id="email" value="{{ $user->email }}" class="form-control" />
+                        <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+                            <div class="form-group">
+                                <strong>Email:</strong>
+                                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input type="password" name="password" id="password" class="form-control" />
+                        <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+                            <div class="form-group">
+                                <strong>Password:</strong>
+                                {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+                            </div>
                         </div>
-                        <div class="form-group mt-4">
+                        <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+                            <div class="form-group">
+                                <strong>Role:</strong>
+                                {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                             <button type="submit" class="btn btn-primary">Actualizar</button>
                         </div>
-                    </form>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

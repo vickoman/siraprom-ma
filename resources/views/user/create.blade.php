@@ -10,9 +10,49 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="/users">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <div class="form-group">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <!-- <form method="POST" action="/users"> -->
+                    {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+                                <div class="form-group">
+                                    <strong>Nombres:</strong>
+                                    {!! Form::text('name', null, array('placeholder' => 'Nombres','class' => 'form-control', 'mt-2')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+                                <div class="form-group">
+                                    <strong>Email:</strong>
+                                    {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control', 'mt-2')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+                                <div class="form-group">
+                                    <strong>Contraseña:</strong>
+                                    {!! Form::password('password', array('placeholder' => '','class' => 'form-control', 'mt-2')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+                                <div class="form-group">
+                                    <strong>Role:</strong>
+                                    {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple', 'mt-2')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
+                                <button type="submit" class="btn btn-primary">Registrar</button>
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group">
                             <label for="nombres">Nombres:</label>
                             <input type="text" placeholder="Inserta los nombres" name="name" id="name" class="form-control" />
                         </div>
@@ -26,8 +66,9 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Registrar</button>
-                        </div>
-                    </form>
+                        </div> -->
+                    {!! Form::close() !!}
+
                 </div>
             </div>
         </div>
