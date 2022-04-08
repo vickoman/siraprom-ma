@@ -13,6 +13,11 @@ use Illuminate\Support\Arr;
 class UserController extends Controller
 {
     private $path = 'user';
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     // show index
     public function index() {
         $data = User::all(); // Get users except logged user

@@ -13,14 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::resource('users', App\Http\Controllers\UserController::class);
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);
+    Route::resource('roles', App\Http\Controllers\RoleController::class);
+    Route::resource('users', App\Http\Controllers\UserController::class);
     // Route::resource('projects', ProjectController::class);
 });
