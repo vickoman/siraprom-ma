@@ -51,22 +51,6 @@
                                 <button type="submit" class="btn btn-primary">Registrar</button>
                             </div>
                         </div>
-
-                        <!-- <div class="form-group">
-                            <label for="nombres">Nombres:</label>
-                            <input type="text" placeholder="Inserta los nombres" name="name" id="name" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" placeholder="Email" name="email" id="email" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input type="password" placeholder="****" name="password" id="password" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Registrar</button>
-                        </div> -->
                     {!! Form::close() !!}
 
                 </div>
