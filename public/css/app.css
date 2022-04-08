@@ -4895,6 +4895,9 @@ textarea.form-control-lg {
   vertical-align: baseline;
   border-radius: 0.25rem;
 }
+.badge-success {
+  background-color: green;
+}
 .badge:empty {
   display: none;
 }
