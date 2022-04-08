@@ -10,6 +10,11 @@
                 </div>
 
                 <div class="card-body">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success" role="alert">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
                     <div class="table-reponsive">
                         @if($data)
                             <table class="table">
@@ -17,30 +22,35 @@
                                     <tr>
                                         <td>Nombre</td>
                                         <td>Email</td>
-                                        <td>Creado</td>
+                                        <td>Role</td>
                                         <td>Acciones</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $row)
+                                    @foreach ($data as $user)
                                         <tr>
-                                            <td>{{ $row->name }}</td>
-                                            <td>{{ $row->email }}</td>
-                                            <td>{{ $row->created_at }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
                                             <td>
-                                                <a href="{{ route('users.edit', $row->id)}}" class="btn btn-primary">Editar</a>
-                                                <form method="POST" action="{{ route('users.destroy', $row->id)}}">
-                                                    <input type="hidden" name="_method" value="DELETE" />
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                                </form>
+                                            @if(!empty($user->getRoleNames()))
+                                                @foreach($user->getRoleNames() as $v)
+                                                <span class="badge badge-success">{{ $v }}</span>
+                                                @endforeach
+                                            @endif
+                                            </td>
+                                            <td>
+                                            <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
+                                            <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                            {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                            {!! Form::close() !!}
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         @else
-                        No hay users aun en la base de datos
+                            <p>No hay users aun en la base de datos</p>
                         @endif
                     </div>
                 </div>
