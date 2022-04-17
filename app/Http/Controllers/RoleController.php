@@ -56,10 +56,13 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:roles,name',
-            'permission' => 'required',
+            'color' => 'required',
+            'permission' => 'required'
         ]);
 
-        $role = Role::create(['name' => $request->input('name')]);
+        $role = Role::create(['name' => $request->input('name'),
+                              'color' => $request->input('color')
+        ]);
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('roles.index')
@@ -74,11 +77,12 @@ class RoleController extends Controller
     public function show($id)
     {
         $role = Role::find($id);
+
         $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
             ->where("role_has_permissions.role_id",$id)
             ->get();
 
-        return view($this->path.'.show',compact('role','rolePermissions'));
+        return view($this->path.'.show',compact('role','color','rolePermissions'));
     }
 
     /**
@@ -109,11 +113,14 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'permission' => 'required',
+            'color' => 'required',
+            'permission' => 'required'
+
         ]);
 
         $role = Role::find($id);
         $role->name = $request->input('name');
+        $role->color = $request->input('color');
         $role->save();
 
         $role->syncPermissions($request->input('permission'));

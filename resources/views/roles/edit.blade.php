@@ -29,6 +29,18 @@
                             {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
                         </div>
                     </div>
+                     <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Color del Rol:</strong>
+                            {!! Form::text('color', old('color'), ['class' => 'form-control colorpicker', 'placeholder' => '']) !!}
+                <p class="help-block"></p>
+                @if($errors->has('color'))
+                    <p class="help-block">
+                        {{ $errors->first('color') }}
+                    </p>
+                @endif
+                        </div>
+                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Permission:</strong>
@@ -52,4 +64,10 @@
         </div>
     </div>
 </div>
+@section('javascript')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/js/bootstrap-colorpicker.min.js"></script>
+    <script>
+        $('.colorpicker').colorpicker();
+    </script>
+@stop
 @endsection

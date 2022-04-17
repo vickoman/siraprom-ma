@@ -17,6 +17,19 @@
                             {{ $role->name }}
                         </div>
                     </div>
+                       <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Rol:</strong>
+                            {{ $role->role }}
+                        </div>
+                    </div>
+                       <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Color:</strong>
+                            {{ $role->color }}
+                        </div>
+                    </div>
+
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Permissions:</strong>

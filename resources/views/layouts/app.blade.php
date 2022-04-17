@@ -15,6 +15,10 @@
 <link rel="icon" href="https://twm.ec/wp-content/uploads/2021/11/68914796_427655731202950_4963250347398135808_n-150x150.jpg" sizes="32x32">
 <link rel="icon" href="https://twm.ec/wp-content/uploads/2021/11/68914796_427655731202950_4963250347398135808_n-300x300.jpg" sizes="192x192">
 <link rel="apple-touch-icon" href="https://twm.ec/wp-content/uploads/2021/11/68914796_427655731202950_4963250347398135808_n-300x300.jpg">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -24,6 +28,7 @@
     <link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
+    <canvas id="canvas"></canvas>
     <div id="app" class="{{ Request::path() }}">
         <?php 
         if (Auth::check()) {
@@ -91,4 +96,65 @@
         </main>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script src="https://unpkg.com/starback@2.0.1/dist/starback.js"></script>
+<script>
+  const canvas = document.getElementById('canvas')
+  const starback = new Starback(canvas, {
+      type: 'dot',
+      quantity: 200,
+      direction: 225,
+      backgroundColor: ['#BFB5C1', '#BFB5C1'],
+      randomOpacity: true,
+      speed: 0.1,
+      starSize: 1,
+  })
+</script>
+<script type="text/javascript">
+
+ 
+
+     $('.show_confirm').click(function(event) {
+
+          var form =  $(this).closest("form");
+
+          var name = $(this).data("name");
+
+          event.preventDefault();
+
+          swal({
+
+              title: `Estas seguro de borrar este registro?`,
+
+              text: "Si lo borras, no podras recuperalo.",
+
+              icon: "warning",
+
+              buttons: true,
+
+              dangerMode: true,
+
+          })
+
+          .then((willDelete) => {
+
+            if (willDelete) {
+    swal("El registro a sido borrado", {
+      icon: "success",
+    });
+              form.submit();
+
+            }
+
+          });
+
+      });
+
+  
+
+</script>
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+@yield('javascript')
 </html>

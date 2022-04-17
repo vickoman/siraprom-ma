@@ -21,5 +21,6 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::resource('users', App\Http\Controllers\UserController::class);
+    Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     // Route::resource('projects', ProjectController::class);
 });

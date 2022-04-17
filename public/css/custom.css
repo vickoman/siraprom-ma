@@ -37,4 +37,87 @@ h2 {
 .h_80.container.d-flex.align-items-center {
   height: 88vh; 
 }
+.sidebar a{
+  color: #3B1047;
+}
 /* login */
+
+.min-vh-100 {
+  min-height: 77vh !important;
+  position: relative;
+}
+#canvas {
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 100%;
+}
+.text-white.min-vh-100::before {
+  content: "";
+  position: absolute;
+  background: #3c1148;
+width: 50px;
+height: 100%;
+left: 0;
+top: 0;
+z-index: 0;
+}
+
+#menu .fs-4 {
+  margin-right: 20px !important;
+  color: #fff;
+}
+#menu .active .fs-4{
+color: #3c1148;
+}
+#menu{
+  z-index: 1;
+}
+#menu li{
+  width: 100%;
+  display: block;
+margin-bottom: 1px;
+position: relative;
+}
+#menu li a{
+ border-left: 3px solid #f7ce1a; 
+}
+#menu .active .nav-link, #menu li:hover a{
+  background: #F7CE1A;
+  border-left: 3px solid #532e5e;
+  border-radius: 0px;
+}
+.badge.badge-success.Super-Admin {
+  background: #3c1148;
+  }
+  .nav-link:hover, .nav-link:focus {
+  color: #3c1148;
+}
+li.active::after {
+  content: "\F231";
+  font-family: bootstrap-icons !important;
+  position: absolute;
+  color: #F7CE1A;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: -20px;
+  display: block;
+  z-index: 9;
+  font-size: 30px;
+}
+.py-4 .container {
+  padding: 0;
+  margin: 0;
+}
+.badge.badge-success.Disenador {
+  background: #f7ce1a;
+  color: #000;
+}
+
+
+  @media screen and (min-width: 1400px){
+.container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+  max-width: 1360px;
+}
+}

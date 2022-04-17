@@ -2,11 +2,23 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-3 rounded-3">
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-12 col-md-12 px-0 bg-light rounded-3 sidebar">
+            <div class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white min-vh-100">
+               @include('sidebar');
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <span class="mr-5">{{ __('List of users') }}</span>
-                    <a href={{ route('users.create')}}>Add new user</a>
+                    <span class="mr-5">{{ __('Lista de usuarios') }}</span>
+                    <a href={{ route('users.create')}}>Añadir nuevo usuario</a>
                 </div>
 
                 <div class="card-body">
@@ -20,34 +32,38 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <td>ID</td>
                                         <td>Nombre</td>
                                         <td>Email</td>
-                                        <td>Role</td>
-                                        <td>Acciones</td>
+                                        <td>Rol</td>
+                                        <td class="text-center">Acciones</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $user)
                                         <tr>
+                                            <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
                                             @if(!empty($user->getRoleNames()))
                                                 @foreach($user->getRoleNames() as $v)
-                                                <span class="badge badge-success">{{ $v }}</span>
+                                                <span class="badge badge-success {{ $v }}" 
+                                                style="background: {{$user->roles->first()->color}}">{{ $v }}</span>
                                                 @endforeach
                                             @endif
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                             @can('user-show')
-                                            <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
+                                            <a class="btn btn-info" href="{{ route('users.show',$user->id) }}"><i class="bi bi-eye"></i> Ver</a>
                                             @endcan
                                             @can('user-edit')
-                                            <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                            <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}"><i class="bi bi-pencil-square"></i>  Editar</a>
                                             @endcan
                                             @can('user-delete')
                                             {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-                                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                               <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'><i class="bi bi-trash"></i>  Borrar </button>
+                                             <!--   {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!} -->
                                             {!! Form::close() !!}
                                             @endcan
                                             </td>
