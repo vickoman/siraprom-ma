@@ -12,8 +12,8 @@
                         <a href="{{ route('roles.index')}}" class="nav-link px-3 align-middle">
                             <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Roles</span></a>
                     </li>
-                    <li class="{{ (request()->is('proyectos')) ? 'active' : '' }}"> 
-                        <a href="#" class="nav-link px-3 align-middle">
+                    <li class="{{ (request()->is('projects')) ? 'active' : '' }}"> 
+                        <a href="{{ route('projects.index')}}" class="nav-link px-3 align-middle">
                             <i class="fs-4 bi-folder-fill"></i> <span class="ms-1 d-none d-sm-inline">Proyectos</span></a>
                     </li class="{{ (request()->is('reportes')) ? 'active' : '' }}">
                                         <li>

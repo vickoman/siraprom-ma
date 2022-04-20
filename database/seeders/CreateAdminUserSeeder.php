@@ -23,7 +23,7 @@ class CreateAdminUserSeeder extends Seeder
             'password' => bcrypt('open$123')
         ]);
 
-        $role = Role::create(['name' => 'Super-Admin']);
+        $role = Role::create(['name' => 'Super-Admin', 'color' => '#ff9a86']);
         $user->assignRole([$role->id]);
     }
 }
