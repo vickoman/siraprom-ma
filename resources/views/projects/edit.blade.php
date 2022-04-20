@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-3 rounded-3">
+    <div class="col-md-3 rounded-3">
             <div class="container-fluid">
                 <div class="row flex-nowrap">
                     <div class="col-12 col-md-12 px-0 bg-light rounded-3 sidebar">
@@ -16,8 +16,8 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <span class="mr-5">{{ __('Editing Role') }}</span>
-                    <a href={{ route('roles.index')}}>Back to the list</a>
+                    <span class="mr-5">{{ __('Editing  Project') }}</span>
+                    <a href={{ route('projects.index')}}>Back to the list</a>
                 </div>
 
                 <div class="card-body">
@@ -32,37 +32,50 @@
                     </div>
                 @endif
 
-                {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+                {!! Form::model($project, ['method' => 'PATCH','route' => ['projects.update', $project->id]]) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Name:</strong>
-                            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                            <strong>Title:</strong>
+                            {!! Form::text('title', null, array('placeholder' => 'Titulo del proyecto','class' => 'form-control')) !!}
                         </div>
                     </div>
-                     <div class="col-xs-12 col-sm-12 col-md-12">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Color del Rol:</strong>
-                            {!! Form::text('color', old('color'), ['class' => 'form-control colorpicker', 'placeholder' => '']) !!}
-                <p class="help-block"></p>
-                @if($errors->has('color'))
-                    <p class="help-block">
-                        {{ $errors->first('color') }}
-                    </p>
-                @endif
+                            <strong>Descripcion:</strong>
+                            {!! Form::text('description', null, array('placeholder' => 'Descripcion del proyecto','class' => 'form-control')) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Tiempo estimado:</strong>
+                            {!! Form::text('eta', null, array('placeholder' => 'Descripcion del proyecto','class' => 'form-control')) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Permission:</strong>
-                            <br/>
-                            @foreach($permission as $value)
-                                <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                                {{ $value->name }}</label>
-                            <br/>
+                            <string>Diseñador:</string>
+                            <select class ="form-control" id="designer_id" name="designer_id">
+                            @foreach ($designers as $udesigner)
+                                <option {{ $udesigner->id == $designer->id ? 'selected':'' }} value="{{ $udesigner->id}}">{{$udesigner->name}}</option>
                             @endforeach
+                            </select>
                         </div>
                     </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <string>Cliente:</string>
+                            <select class ="form-control" id="client_id" name="client_id">
+                            @foreach ($clients as $uclient)
+                                <option {{ $uclient->id == $client->id ? 'selected':'' }} value="{{ $uclient->id }}">{{$uclient->name}}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
