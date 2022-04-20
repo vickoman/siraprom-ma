@@ -8,7 +8,7 @@
                         <a href="{{ route('users.index')}}" class="nav-link px-3 align-middle">
                             <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span> </a>
                     </li>
-                    <li class="{{ (request()->is('roles')) ? 'active' : '' }}">
+                    <li class="{{ (request()->is('roles') || request()->is('roles/create') || request()->is('roles/*') || request()->is('roles/*/edit')) ? 'active' : '' }}">
                         <a href="{{ route('roles.index')}}" class="nav-link px-3 align-middle">
                             <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Roles</span></a>
                     </li>

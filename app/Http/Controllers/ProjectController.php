@@ -62,6 +62,33 @@ class ProjectController extends Controller
         return view($this->path.'.show',compact('project','designer','client'));
     }
 
+    public function edit($id)
+    {
+        $project = Project::find($id);
+        $designer = User::find($project->designer_id);
+        $client = User::find($project->client_id);
+        $designers = User::whereHas("roles", function($q){ $q->where("name", "Designer"); })->get();
+        $clients = User::whereHas("roles", function($q){ $q->where("name", "Client"); })->get();
+        return view($this->path.'.edit',compact('project', 'designers', 'designer',  'clients', 'client'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'eta' => 'required',
+            'client_id' => 'required',
+            'designer_id' => 'required',
+        ]);
+
+        $project = Project::find($id);
+        $project->update($request->all());
+
+        return redirect()->route($this->path.'.index')
+            ->with('success','Project updated successfully.');
+    }
+
     public function destroy($id)
     {
         Project::find($id)->delete();
