@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-    <div class="col-md-3 rounded-3">
+        <div class="col-md-3 rounded-3">
             <div class="container-fluid">
                 <div class="row flex-nowrap">
                     <div class="col-12 col-md-12 px-0 bg-light rounded-3 sidebar">
