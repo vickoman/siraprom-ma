@@ -16,14 +16,14 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <span class="mr-5">{{ __('Creating user') }}</span>
-                    <a href={{ route('users.index')}}>Back to the list</a>
+                    <span class="mr-5">{{ __('Creando usuario') }}</span>
+                    <a href={{ route('users.index')}}>Regresando al listado de Usuarios</a>
                 </div>
 
                 <div class="card-body">
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <strong>Lo siento!</strong> Hubo algunos problemas con tu entrada.<br><br>
                             <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
                                 <div class="form-group">
-                                    <strong>Role:</strong>
+                                    <strong>Roles:</strong>
                                     {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple', 'mt-2')) !!}
                                 </div>
                             </div>

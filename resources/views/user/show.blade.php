@@ -17,15 +17,15 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <span class="mr-5">{{ __('User Details') }}</span>
-                    <a href={{ route('users.index')}}>Back to the list</a>
+                    <span class="mr-5">{{ __('Detalles de Usuario') }}</span>
+                    <a href={{ route('users.index')}}>Regresar al Listado de usuarios</a>
                 </div>
 
                 <div class="card-body">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Name:</strong>
+                                <strong>Nombre:</strong>
                                 {{ $user->name }}
                             </div>
                         </div>

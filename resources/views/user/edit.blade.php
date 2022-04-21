@@ -17,8 +17,8 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <span class="mr-5">{{ __('Editing user') }}</span>
-                    <a href={{ route('users.index')}}>Back to the list</a>
+                    <span class="mr-5">{{ __('Editando usuario') }}</span>
+                    <a href={{ route('users.index')}}>Regresar al listado de usuario</a>
                 </div>
 
                 <div class="card-body">
@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
                             <div class="form-group">
-                                <strong>Name:</strong>
+                                <strong>Nombre:</strong>
                                 {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
                             </div>
                         </div>
@@ -47,13 +47,13 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
                             <div class="form-group">
-                                <strong>Password:</strong>
+                                <strong>Contraseña:</strong>
                                 {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
                             <div class="form-group">
-                                <strong>Role:</strong>
+                                <strong>Roles:</strong>
                                 {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
                             </div>
                         </div>

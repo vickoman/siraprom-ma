@@ -16,14 +16,14 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <span class="mr-5">{{ __('Creating Role') }}</span>
-                    <a href={{ route('roles.index')}}>List of roles</a>
+                    <span class="mr-5">{{ __('Creando Roles') }}</span>
+                    <a href={{ route('roles.index')}}>Regresar al Listadp de roles</a>
                 </div>
 
                 <div class="card-body">
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <strong>Lo siento!</strong> Hubo algunos problemas con tu entrada.<br><br>
                             <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Permission:</strong>
+                            <strong>Permisos:</strong>
                             <br/>
                             @foreach($permission as $value)
                                 <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Guardar Role</button>
+                        <button type="submit" class="btn btn-primary">Guardar Rol</button>
                     </div>
                     </div>
                     {!! Form::close() !!}

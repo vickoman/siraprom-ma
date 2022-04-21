@@ -33,8 +33,8 @@
                                 <thead>
                                     <tr>
                                         <td>#</td>
-                                        <td>title</td>
-                                        <td>description</td>
+                                        <td>Titlo</td>
+                                        <td>Descripcion</td>
                                         <td  class="text-center">Acciones</td>
                                     </tr>
                                 </thead>

@@ -16,15 +16,15 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <span class="mr-5">{{ __('Role Details') }}</span>
-                    <a href={{ route('roles.index')}}>Back to the list</a>
+                    <span class="mr-5">{{ __('Detalles de Roles') }}</span>
+                    <a href={{ route('roles.index')}}>Regresar al list</a>
                 </div>
 
                 <div class="card-body">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $role->name }}
                         </div>
                     </div>
@@ -43,7 +43,7 @@
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Permissions:</strong>
+                            <strong>Permisos:</strong>
                             @if(!empty($rolePermissions))
                                 @foreach($rolePermissions as $v)
                                     <label class="label label-success">{{ $v->name }},</label>
