@@ -33,7 +33,7 @@ class ProjectController extends Controller
     {
         $permission = Permission::get();
         $designers = User::whereHas("roles", function($q){ $q->where("name", "Disenador"); })->get();
-        $clients = User::whereHas("roles", function($q){ $q->where("name", "cliente"); })->get();
+        $clients = User::whereHas("roles", function($q){ $q->where("name", "Cliente"); })->get();
         return view($this->path.'.create',compact('permission', 'designers', 'clients'));
     }
 
@@ -67,8 +67,9 @@ class ProjectController extends Controller
         $project = Project::find($id);
         $designer = User::find($project->designer_id);
         $client = User::find($project->client_id);
-        $designers = User::whereHas("role", function($q){ $q->where("name", "Designer"); })->get();
-        $clients = User::whereHas("role", function($q){ $q->where("name", "Client"); })->get();
+        $designers = User::whereHas("roles", function($q){ $q->where("name", "Disenador"); })->get();
+        $clients = User::whereHas("roles", function($q){ $q->where("name", "Cliente"); })->get();
+
         return view($this->path.'.edit',compact('project', 'designers', 'designer',  'clients', 'client'));
     }
 
