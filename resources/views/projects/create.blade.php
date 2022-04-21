@@ -49,7 +49,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Tiempo Estimado de Entrega:</strong>
-                            {!! Form::text('eta', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                            {!! Form::text('eta', null, ['class' => 'form-control datepicker', 'placeholder' => '']) !!}
                         </div>
                     </div>
 
@@ -58,13 +58,14 @@
                             <strong>Diseñador:</strong>
                             <!-- {!! Form::text('designer', null, ['class' => 'form-control', 'placeholder' => 'search designer']) !!} -->
                             {!! Form::select('designer_id', $designers->pluck('name', 'id'), null, [ 'class' => 'form-control', 'placeholder' => 'Selecciona diseñador responsable']) !!}
+                            
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Cliente:</strong>
-                            {!! Form::select('client_id', $clients->pluck('name', 'id'), null, [ 'class' => 'form-control', 'placeholder' => 'Selecciona diseñador responsable']) !!}
+                            {!! Form::select('client_id', $clients->pluck('name', 'id'), null, [ 'class' => 'form-control', 'placeholder' => 'Selecciona cliente']) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

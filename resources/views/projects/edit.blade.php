@@ -51,7 +51,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Tiempo estimado:</strong>
-                            {!! Form::text('eta', null, array('placeholder' => 'Descripcion del proyecto','class' => 'form-control')) !!}
+                            {!! Form::text('eta', null, array('placeholder' => 'Descripcion del proyecto','class' => 'form-control datepicker')) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
