@@ -119,8 +119,34 @@ li.active::after {
     padding: 8px 12px;
     font-size: 14px;
 }
-
+.preview{
+  height: 200px;
+  background: #ccc;
+  background-image: url(https://twm.ec/wp-content/uploads/2021/11/LOGOWEB-01.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}  
+.relative svg {
+  width: 20px;
+}
+.sm\:hidden {
+  display: none;
+}
+.card-header{
+background: #f7ce1a;
+  }
+  .card-header a{
+    margin-left: 5px;
+background: #3C1148;
+padding: 7px 20px;
+color: #fff;
+border-radius: 10px;
+text-decoration: none;
+  }
   @media screen and (min-width: 1400px){
+}
+}
 .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
   max-width: 1360px;
 }

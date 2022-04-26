@@ -16,8 +16,8 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <span class="mr-5">{{ __('Editando Proyecto') }}</span>
-                    <a href={{ route('projects.index')}}>Regresar al listado de Proyectos</a>
+                    <span class="mr-5">{{ __('Editando avance') }}</span>
+                    <a href={{ route('projects.index')}}}>Regresar al listado de avances</a>
                 </div>
 
                 <div class="card-body">
@@ -32,54 +32,36 @@
                     </div>
                 @endif
 
-                {!! Form::model($project, ['method' => 'PATCH','route' => ['projects.update', $project->id]]) !!}
+                {!! Form::model($avance, ['method' => 'PATCH','route' => ['avances.update', $avance->id]]) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Titulo:</strong>
-                            {!! Form::text('title', null, array('placeholder' => 'Titulo del proyecto','class' => 'form-control')) !!}
+                            <strong>Nombre del avance:</strong>
+                            {!! Form::text('name', null, array('placeholder' => 'Nombre del Avance','class' => 'form-control')) !!}
                         </div>
                     </div>
-
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Descripcion:</strong>
-                            {!! Form::text('description', null, array('placeholder' => 'Descripcion del proyecto','class' => 'form-control')) !!}
+                            {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => "4", 'cols' => "52", 'placeholder' => 'Description del avance']) !!}
                         </div>
                     </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-7">
                         <div class="form-group">
-                            <strong>Tiempo estimado:</strong>
-                            {!! Form::text('eta', null, array('placeholder' => 'Descripcion del proyecto','class' => 'form-control datepicker')) !!}
+                            <strong>Archivo del Avance:</strong><br>
+                            {!! Form::text('file', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-5">
                         <div class="form-group">
-                            <string>Diseñador:</string>
-                            <select class ="form-control" id="designer_id" name="designer_id">
-                            @foreach ($designers as $udesigner)
-                                <option  value="{{ $udesigner->id}}" {{ $udesigner->id == $designer->id ? 'selected':'' }}>{{$udesigner->name}}</option>
-                            @endforeach
-                            </select>
+                            <strong>Preview:</strong>
+                            <div class="preview"></div>
                         </div>
                     </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <string>Cliente:</string>
-                            <select class ="form-control" id="client_id" name="client_id">
-                            @foreach ($clients as $uclient)
-                                <option  value="{{ $uclient->id }}" >{{$uclient->name}}</option>
-                            @endforeach
-                            </select>
-                        </div>
-                    </div>
-
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-primary">Guardar avance</button>
                     </div>
-                </div>
+                    </div>
                 {!! Form::close() !!}
 
 

@@ -17,8 +17,8 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <span class="mr-5">{{ __('Roles') }}</span>
-                    <a href={{ route('projects.create')}}>Añadir nuevo proyecto</a>
+                    <span class="mr-5">{{ __('Avances') }}</span>
+                    <a href={{ route('avances.create')}}>Añadir nuevo avance</a>
                 </div>
 
                 <div class="card-body">
@@ -28,7 +28,7 @@
                         </div>
                     @endif
                     <div class="table-reponsive">
-                        @if(count($projects) > 0)
+                        @if(count($avances) > 0)
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -39,20 +39,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($projects as $key => $project)
+                                    @foreach ($avances as $key => $avance)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $project->title }}</td>
-                                            <td >{{ $project->description }}</td>
+                                            <td>{{ $avance->name }}</td>
+                                            <td >{{ $avance->description }}</td>
                                             <td  class="text-center">
-                                                @can('project-show')
-                                            <a class="btn btn-info" href="{{ route('projects.show',$project->id) }}"><i class="bi bi-eye"></i> Ver</a>
-                                             @endcan
-                                                @can('project-edit')
-                                                    <a class="btn btn-primary" href="{{ route('projects.edit',$project->id) }}"><i class="bi bi-pencil-square"></i>  Editar</a>
+                                            <a class="btn btn-info" href="{{ route('avances.show',$avance->id) }}"><i class="bi bi-eye"></i> Ver</a>
+                                                @can('avance-edit')
+                                                    <a class="btn btn-primary" href="{{ route('avances.edit',$avance->id) }}"><i class="bi bi-pencil-square"></i>  Editar</a>
                                                 @endcan
-                                                @can('project-delete')
-                                                    {!! Form::open(['method' => 'DELETE','route' => ['projects.destroy', $project->id],'style'=>'display:inline']) !!}
+                                                @can('avance-delete')
+                                                    {!! Form::open(['method' => 'DELETE','route' => ['avances.destroy', $avance->id],'style'=>'display:inline']) !!}
                                                     <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'><i class="bi bi-trash"></i>  Borrar </button>
                                                      <!--   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} -->
                                                     {!! Form::close() !!}

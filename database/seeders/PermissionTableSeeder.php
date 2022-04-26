@@ -26,6 +26,11 @@ class PermissionTableSeeder extends Seeder
             'project-edit',
             'project-delete',
             'project-show',
+            'avance-list',
+            'avance-create',
+            'avance-edit',
+            'avance-delete',
+            'avance-show',
             'user-list',
             'user-create',
             'user-edit',
@@ -33,7 +38,8 @@ class PermissionTableSeeder extends Seeder
             'user-show'
         ];
         foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission]);
+            //Permission::create(['name' => $permission]);
+            Permission::updateOrCreate(['name' => $permission]);
         }
     }
 }

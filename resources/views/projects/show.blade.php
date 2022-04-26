@@ -22,6 +22,7 @@
 
                 <div class="card-body">
                 <div class="row">
+                  <div class="col-md-8 col-sm-12 col-xs-12 ">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Titulo:</strong>
@@ -54,10 +55,74 @@
                             {{ $client->name }}
                         </div>
                     </div>
+                  </div>
+                  <div class="col-md-4 col-sm-12 col-xs-12 text-right">
+                    <a class="btn btn-primary" href="{{ route('avances.create',['project_id' => $project->id]) }}" ><i class="bi bi-pencil-square"></i>  Nuevo avance</a>
+                  </div>
                 </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+        <div class="col-12">
+            <h2>Avances dentro del Proyecto</h2>
+                        <div class="card">
+                <div class="card-header">
+                    <span class="mr-5">{{ __('Listado de avances') }}</span>
+                </div>
+                            <div class="card-body">
+                                <div class="table-reponsive">
+
+                        @if(count($avances) > 0)
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>Titlo</td>
+                                        <td>Descripcion</td>
+                                        <td  class="text-center">Acciones</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($avances as $key => $avance)
+                                        <tr>
+                                            <td>{{ $avance->id }}</td>
+                                            <td>{{ $avance->name }}</td>
+                                            <td >{{ $avance->description }}</td>
+                                            <td  class="text-center">
+                                            <a class="btn btn-info" href="{{ route('avances.show',$avance->id) }}"><i class="bi bi-eye"></i> Ver</a>
+                                                @can('avance-edit')
+                                                    <a class="btn btn-primary" href="{{ route('avances.edit',$avance->id) }}"><i class="bi bi-pencil-square"></i>  Editar</a>
+                                                @endcan
+                                                @can('project-delete')
+                                                    {!! Form::open(['method' => 'DELETE','route' => ['avances.destroy', $avance->id],'style'=>'display:inline']) !!}
+                                                    <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'><i class="bi bi-trash"></i>  Borrar </button>
+                                                     <!--   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} -->
+                                                    {!! Form::close() !!}
+                                                @endcan
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                            <div> {{ $avances->links() }}</div>
+                        @else
+                            <p>No hay proyectos aun en la base de datos</p>
+                        @endif
+                    </div>
+                </div>
         </div>
+    </div>  
+
+
+        </div>
+
     </div>
 </div>
 @endsection

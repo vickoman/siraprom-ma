@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\User;
+use App\Models\Avance;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Auth;
 
 class ProjectController extends Controller
 {
@@ -24,7 +27,15 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::latest()->paginate(5);
+
+        $projects = Project::latest();
+         if(Auth::user()->hasRole('Disenador')){
+              $projects=$projects->where('designer_id', Auth::user()->id);
+          }
+        if(Auth::user()->hasRole('Cliente')){
+              $projects=$projects->where('client_id', Auth::user()->id);
+          }
+          $projects = $projects->paginate(5);
         return view($this->path.'.index',compact('projects'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -58,8 +69,8 @@ class ProjectController extends Controller
         $project = Project::find($id);
         $designer = User::find($project->designer_id);
         $client = User::find($project->client_id);
-
-        return view($this->path.'.show',compact('project','designer','client'));
+        $avances = Avance::where("project_id","=",$id) ->orderByDesc('created_at')->paginate(20);
+        return view($this->path.'.show',compact('project','designer','client', 'avances'));
     }
 
     public function edit($id)
@@ -67,8 +78,8 @@ class ProjectController extends Controller
         $project = Project::find($id);
         $designer = User::find($project->designer_id);
         $client = User::find($project->client_id);
-        $designers = User::whereHas("role", function($q){ $q->where("name", "Designer"); })->get();
-        $clients = User::whereHas("role", function($q){ $q->where("name", "Client"); })->get();
+        $designers = User::whereHas("roles", function($q){ $q->where("name", "Disenador"); })->get();
+        $clients = User::whereHas("roles", function($q){ $q->where("name", "cliente"); })->get();
         return view($this->path.'.edit',compact('project', 'designers', 'designer',  'clients', 'client'));
     }
 
