@@ -79,12 +79,10 @@ class ProjectController extends Controller
         $designer = User::find($project->designer_id);
         $client = User::find($project->client_id);
         $designers = User::whereHas("roles", function($q){ $q->where("name", "Disenador"); })->get();
-<<<<<<< HEAD
-        $clients = User::whereHas("roles", function($q){ $q->where("name", "cliente"); })->get();
-=======
+
         $clients = User::whereHas("roles", function($q){ $q->where("name", "Cliente"); })->get();
 
->>>>>>> c3e11c218354161b00bad88c02eaeeed7abb6945
+
         return view($this->path.'.edit',compact('project', 'designers', 'designer',  'clients', 'client'));
     }
 
