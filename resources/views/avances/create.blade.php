@@ -32,7 +32,7 @@
                         </div>
                     @endif
 
-                    {!! Form::open(array('route' => 'avances.store','method'=>'POST')) !!}
+                    {!! Form::open(array('route' => 'avances.store','method'=>'POST', 'enctype'=>'multipart/form-data')) !!}
                     <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -55,13 +55,15 @@
                     <div class="col-xs-12 col-sm-12 col-md-7">
                         <div class="form-group">
                             <strong>Archivo del Avance:</strong><br>
-                            {!! Form::text('file', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                           <!-- {!! Form::file('file', null, ['class' => 'form-control file', 'placeholder' => '']) !!} -->
+                            <input type="file" name="file" id="file" class="form-control">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-5">
                         <div class="form-group">
                             <strong>Preview:</strong>
-                            <div class="preview"></div>
+                            <div id="preview" class="preview">
+                            <img src="" class="preview"></div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

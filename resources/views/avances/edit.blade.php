@@ -21,6 +21,11 @@
                 </div>
 
                 <div class="card-body">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success" role="alert">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">
                         <strong>Lo siento!</strong> Hubo algunos problemas con tu entrada.<br><br>
@@ -32,7 +37,7 @@
                     </div>
                 @endif
 
-                {!! Form::model($avance, ['method' => 'PATCH','route' => ['avances.update', $avance->id]]) !!}
+                {!! Form::model($avance, ['method' => 'PATCH','route' => ['avances.update', $avance->id], 'enctype'=>'multipart/form-data' ]) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -49,13 +54,15 @@
                     <div class="col-xs-12 col-sm-12 col-md-7">
                         <div class="form-group">
                             <strong>Archivo del Avance:</strong><br>
-                            {!! Form::text('file', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                           <!-- {!! Form::file('file', null, ['class' => 'form-control file', 'placeholder' => '']) !!} -->
+                            <input type="file" name="file" id="file" class="form-control">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-5">
                         <div class="form-group">
                             <strong>Preview:</strong>
-                            <div class="preview"></div>
+                            <div id="preview" class="preview">
+                            <img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}"></div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -71,9 +78,6 @@
     </div>
 </div>
 @section('javascript')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/js/bootstrap-colorpicker.min.js"></script>
-    <script>
-        $('.colorpicker').colorpicker();
-    </script>
+
 @stop
 @endsection

@@ -14,4 +14,5 @@ class Avance extends Model
         'file',
         'project_id',
     ];
+    
 }

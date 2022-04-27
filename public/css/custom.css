@@ -120,13 +120,18 @@ li.active::after {
     font-size: 14px;
 }
 .preview{
-  height: 200px;
+  min-height: 200px;
   background: #ccc;
-  background-image: url(https://twm.ec/wp-content/uploads/2021/11/LOGOWEB-01.png);
+
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 50%;
-}  
+  width: 100%;
+object-fit: contain;
+} 
+img{
+  max-width: 100%;
+} 
 .relative svg {
   width: 20px;
 }
@@ -145,8 +150,7 @@ border-radius: 10px;
 text-decoration: none;
   }
   @media screen and (min-width: 1400px){
-}
-}
+
 .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
   max-width: 1360px;
 }
