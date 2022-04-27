@@ -58,7 +58,7 @@ class UserController extends Controller
             $user->assignRole($request->input('roles'));
 
             return redirect()->route('users.index')
-                        ->with('success','User created successfully');
+                        ->with('success','Usuario creado correctamente');
 
         }catch(Exception $e) {
             return "Fatal error - " . $e->getMessage();
@@ -94,7 +94,7 @@ class UserController extends Controller
             $user->assignRole($request->input('roles'));
 
             return redirect()->route('users.index')
-                            ->with('success','User updated successfully');
+                            ->with('success','Usuario actualizado correctamente');
         }catch(Exception $e) {
             return "Fatal error - " . $e->getMessage();
         }
@@ -105,7 +105,7 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $user->delete();
             return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
+                        ->with('success','Usuario borrado correctamente');
         }catch(Exception $e) {
             return "Fatal error - " . $e->getMessage();
         }

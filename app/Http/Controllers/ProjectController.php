@@ -61,7 +61,7 @@ class ProjectController extends Controller
         $project = Project::create($request->all());
 
         return redirect()->route('projects.index')
-            ->with('success','Project created successfully.');
+            ->with('success','Project creado correctamente.');
     }
 
     public function show($id)
@@ -100,13 +100,13 @@ class ProjectController extends Controller
         $project->update($request->all());
 
         return redirect()->route($this->path.'.index')
-            ->with('success','Project updated successfully.');
+            ->with('success','Proyecto actualizado correctamente.');
     }
 
     public function destroy($id)
     {
         Project::find($id)->delete();
         return redirect()->route($this->path.'.index')
-            ->with('success','Project deleted successfully');
+            ->with('success','Proyecto borrado correctamente');
     }
 }

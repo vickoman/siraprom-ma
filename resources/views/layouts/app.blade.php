@@ -96,6 +96,9 @@
         </main>
     </div>
 </body>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script src="https://unpkg.com/starback@2.0.1/dist/starback.js"></script>
 <script>
@@ -115,25 +118,16 @@
  
 
      $('.show_confirm').click(function(event) {
-
           var form =  $(this).closest("form");
-
           var name = $(this).data("name");
-
           event.preventDefault();
-
           swal({
-
               title: `Estas seguro de borrar este registro?`,
-
               text: "Si lo borras, no podras recuperalo.",
-
               icon: "warning",
-
               buttons: true,
-
               dangerMode: true,
-
+              buttons: ["No, cancelar!", "Ok"],
           })
 
           .then((willDelete) => {
@@ -154,14 +148,16 @@
 
 </script>
 
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <script type="text/javascript">
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
     startDate: '0d'
 });
+
+</script>
+<script type='text/javascript'>
+    document.oncontextmenu = function(){return false}
 </script>
     <script type="text/javascript">
     $(document).ready(function (e) {

@@ -57,7 +57,9 @@
                     </div>
                   </div>
                   <div class="col-md-4 col-sm-12 col-xs-12 text-right">
+                    @can('avance-create')
                     <a class="btn btn-primary" href="{{ route('avances.create',['project_id' => $project->id]) }}" ><i class="bi bi-pencil-square"></i>  Nuevo avance</a>
+                    @endcan
                   </div>
                 </div>
                 </div>

@@ -138,7 +138,7 @@ class AvanceController extends Controller
 
        // $project->update($request->all());
 
-        //return redirect()->route($this->path.'.index')->with('success','Project updated successfully.');
+        //return redirect()->route($this->path.'.index')->with('success','Project actualizado correctamente.');
 
 
                     
@@ -153,7 +153,7 @@ class AvanceController extends Controller
      //   return redirect()->route('projects.index'.'/'.[$project_id])
       //      ->with('success','Avance agregado correctamente.');
            // return redirect('projects/'.$project_id)->with('success','Avance agregado correctamente.');
-            return redirect()->back()->with('success','Avance agregado correctamente');
+            return redirect()->back()->with('success','Avance actualizado correctamente');
     }
 
     /**
@@ -167,7 +167,7 @@ class AvanceController extends Controller
           try {
             $avance = Avance::findOrFail($id);
             $avance->delete();
-            //return redirect()->route('avances.index')->with('success','User deleted successfully');
+            //return redirect()->route('avances.index')->with('success','User borrado correctamente');
             //return redirect('projects/')->with('success','Avance eliminado correctamente.');
             return redirect()->back()->with('success','Avance eliminado correctamente.');
 
