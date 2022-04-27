@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="mr-5">{{ __('Creando Nuevo Avance') }}</span> 
-                    <a href={{ route('projects.index')}}>Ir al avance Principal</a>
+                    <a href="{{ url()->previous() }}">Ir al avance Principal</a>
                 </div>
 
                 <div class="card-body">

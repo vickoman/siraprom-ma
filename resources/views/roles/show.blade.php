@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="mr-5">{{ __('Detalles de Roles') }}</span>
-                    <a href={{ route('roles.index')}}>Regresar al list</a>
+                    <a href={{ route('roles.index')}}>Regresar al listado de Roles</a>
                 </div>
 
                 <div class="card-body">

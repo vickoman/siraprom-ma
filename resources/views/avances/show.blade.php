@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="mr-5">{{ __('Detalle de avances') }}</span>
-                    <a href={{ route('projects.index')}}>Regresar al listado de avances</a>
+                    <a href="{{ url()->previous() }}">Regresar al listado de avances</a>
                 </div>
 
                 <div class="card-body">
