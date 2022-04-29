@@ -122,7 +122,7 @@ class AvanceController extends Controller
                 $post = Avance::find($id);
 
         if($request->file != ''){     
-          //code for remove old file
+          //codigo para borrar un archivo 
             $base_path='storage/images/';
           if($post->file != ''  && $post->file != null){
                $file_old = $base_path.$post->file;
@@ -136,23 +136,6 @@ class AvanceController extends Controller
         $post->description = $request->description;
         $post->update();
 
-       // $project->update($request->all());
-
-        //return redirect()->route($this->path.'.index')->with('success','Project actualizado correctamente.');
-
-
-                    
-        
-
-       //     $file = $request->file('file') ;
-        //    $fileName = $path;
-         //   $destinationPath = public_path().'/images' ;
-          //  $file->move($destinationPath,$fileName);
-        //$avance = Avance::create($request->all());
-
-     //   return redirect()->route('projects.index'.'/'.[$project_id])
-      //      ->with('success','Avance agregado correctamente.');
-           // return redirect('projects/'.$project_id)->with('success','Avance agregado correctamente.');
             return redirect()->back()->with('success','Avance actualizado correctamente');
     }
 
@@ -166,6 +149,14 @@ class AvanceController extends Controller
     {
           try {
             $avance = Avance::findOrFail($id);
+                    if($request->file != ''){     
+          //codigo para borrar un archivo 
+            $base_path='storage/images/';
+          if($post->file != ''  && $post->file != null){
+               $file_old = $base_path.$post->file;
+               unlink($file_old);
+          }
+      }
             $avance->delete();
             //return redirect()->route('avances.index')->with('success','User borrado correctamente');
             //return redirect('projects/')->with('success','Avance eliminado correctamente.');

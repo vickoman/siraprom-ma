@@ -46,7 +46,7 @@
                                             <td >{{ $project->description }}</td>
                                             <td  class="text-center">
                                                 @can('project-show')
-                                            <a class="btn btn-info" href="{{ route('projects.show',$project->id) }}"><i class="bi bi-eye"></i> Ver</a>
+                                            <a class="btn btn-info" href="{{ route('projects.show',$project->id) }}"><i class="bi bi-eye"></i> Revisar avances</a>
                                              @endcan
                                                 @can('project-edit')
                                                     <a class="btn btn-primary" href="{{ route('projects.edit',$project->id) }}"><i class="bi bi-pencil-square"></i>  Editar</a>

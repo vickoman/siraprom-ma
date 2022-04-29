@@ -31,8 +31,9 @@ class LoginController extends Controller
     {
         if (auth()->user()->role != 'Super-Admin') {
             return '/projects';
-        }
+        }else{
         return '/';
+    }
     }
     /**
      * Create a new controller instance.
