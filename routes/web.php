@@ -24,4 +24,7 @@ Route::group(['middleware' => ['auth']], function() {
    // Route::delete('users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
     Route::resource('projects', App\Http\Controllers\ProjectController::class);
     Route::resource('avances', App\Http\Controllers\AvanceController::class);
+    Route::resource('send', App\Http\Controllers\SendController::class);
+    Route::post('send', 'SendController@send');
+
 });

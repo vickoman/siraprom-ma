@@ -109,4 +109,6 @@ class ProjectController extends Controller
         return redirect()->route($this->path.'.index')
             ->with('success','Proyecto borrado correctamente');
     }
+
+    
 }

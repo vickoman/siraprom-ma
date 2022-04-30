@@ -33,8 +33,9 @@
                                 <thead>
                                     <tr>
                                         <td>#</td>
-                                        <td>Titlo</td>
+                                        <td>Titulo</td>
                                         <td>Descripcion</td>
+                                        <td class="text-center">Estado</td>
                                         <td  class="text-center">Acciones</td>
                                     </tr>
                                 </thead>
@@ -44,6 +45,7 @@
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $project->title }}</td>
                                             <td >{{ $project->description }}</td>
+                                            <td></td>
                                             <td  class="text-center">
                                                 @can('project-show')
                                             <a class="btn btn-info" href="{{ route('projects.show',$project->id) }}"><i class="bi bi-eye"></i> Revisar avances</a>

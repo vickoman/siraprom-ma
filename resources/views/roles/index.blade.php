@@ -34,7 +34,7 @@
                                     <tr>
                                         <td>#</td>
                                         <td>Nombre de Rol</td>
-                                        <td colspan="2">Color</td>
+                                        <td colspan="2" class="text-center">Color</td>
                                         <td  class="text-center">Acciones</td>
                                     </tr>
                                 </thead>

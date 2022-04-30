@@ -85,8 +85,9 @@
                                 <thead>
                                     <tr>
                                         <td>#</td>
-                                        <td>Titlo</td>
+                                        <td>Titulo</td>
                                         <td>Descripcion</td>
+                                        <td class="text-center">Estado</td>
                                         <td  class="text-center">Acciones</td>
                                     </tr>
                                 </thead>
@@ -96,6 +97,7 @@
                                             <td>{{ $avance->id }}</td>
                                             <td>{{ $avance->name }}</td>
                                             <td >{{ $avance->description }}</td>
+                                            <td></td>
                                             <td  class="text-center">
                                             <a class="btn btn-info" href="{{ route('avances.show',$avance->id) }}"><i class="bi bi-eye"></i> Ver</a>
                                                 @can('avance-edit')
@@ -115,11 +117,28 @@
                                 </button>
                         </div>
                         <div class="modal-body">
-                                Welcome, Websolutionstuff !!
-                        </div>
+<form method="post" action="{{url('send')}}">
+    <input name="_method" type="hidden" value="PATH">
+    {{ csrf_field() }}
+    <div class="form-group mb-2">
+     <label class="font-weight-bold">Correo a cual enviar </label>
+     <input type="text" name="email" class="form-control" value="{{ $client->email }}"  disabled />
+    </div>
+    <div class="form-group mb-2">
+     <label class="font-weight-bold">Asunto del correo</label>
+     <input type="text" name="subject" class="form-control" value="Nuevo avance '{{ $avance->name }}'" />
+    </div>
+    <div class="form-group mb-2">
+     <label class="font-weight-bold">Mensaje a Enviar</label>
+     <textarea name="message" class="form-control" rows="6">Hola estimado {{ $client->name }}, le saludamos de parte de TWM para comunicarle que hay un nuevo avance. Puede revisarlo en el siguiente enlace: {{ route('avances.show',$avance->id) }}</textarea>
+    </div>   <br>
+    <div class="form-group">
+     <input type="submit" name="send" class="btn btn-info" value="Enviar correo a {{ $client->name }}" />
+    </div>
+   </form>                        </div>
+
                         <div class="modal-footer">
                             <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">Cerrar</button>
-                                <button type="button" class="btn btn-primary">Enviar</button>
                         </div>
                     </div>
                 </div>

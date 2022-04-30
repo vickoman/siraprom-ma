@@ -149,6 +149,9 @@ color: #fff;
 border-radius: 10px;
 text-decoration: none;
   }
+  .font-weight-bold{
+font-weight: bold;
+  }
   @media screen and (min-width: 1400px){
 
 .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
