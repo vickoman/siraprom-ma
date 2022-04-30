@@ -101,6 +101,30 @@
                                                 @can('avance-edit')
                                                     <a class="btn btn-primary" href="{{ route('avances.edit',$avance->id) }}"><i class="bi bi-pencil-square"></i>  Editar</a>
                                                 @endcan
+                                                @can('avance-edit')
+                                                    <button class="btn btn-primary" data-toggle="modal" data-target="#demoModal-{{ $client->id }}"><i class="bi bi-pencil-square"></i>  Enviar notificacion</button>
+                        <div class="modal fade" id="demoModal-{{ $client->id }}" tabindex="-1" role="dialog" aria- 
+            labelledby="demoModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="demoModalLabel" >Enviar notificacion a {{ $client->name }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria- 
+                                label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                                Welcome, Websolutionstuff !!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">Cerrar</button>
+                                <button type="button" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                                @endcan
                                                 @can('project-delete')
                                                     {!! Form::open(['method' => 'DELETE','route' => ['avances.destroy', $avance->id],'style'=>'display:inline']) !!}
                                                     <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'><i class="bi bi-trash"></i>  Borrar </button>
@@ -109,6 +133,8 @@
                                                 @endcan
                                             </td>
                                         </tr>
+                                                <!-- Modal Example Start-->
+
                                     @endforeach
 
                                 </tbody>

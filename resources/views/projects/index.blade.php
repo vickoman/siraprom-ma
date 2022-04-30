@@ -17,7 +17,7 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <span class="mr-5">{{ __('Roles') }}</span>
+                    <span class="mr-5">{{ __('Proyectos') }}</span>
                     <a href={{ route('projects.create')}}>Añadir nuevo proyecto</a>
                 </div>
 
