@@ -78,6 +78,11 @@
                     <span class="mr-5">{{ __('Listado de avances') }}</span>
                 </div>
                             <div class="card-body">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success" role="alert">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
                                 <div class="table-reponsive">
 
                         @if(count($avances) > 0)
@@ -118,11 +123,10 @@
                         </div>
                         <div class="modal-body">
 <form method="post" action="{{url('send')}}">
-    <input name="_method" type="hidden" value="PATH">
-    {{ csrf_field() }}
+    @csrf
     <div class="form-group mb-2">
      <label class="font-weight-bold">Correo a cual enviar </label>
-     <input type="text" name="email" class="form-control" value="{{ $client->email }}"  disabled />
+     <input style="pointer-events: none;" name="email" type="email" class="form-control" value="{{ $client->email }}" />
     </div>
     <div class="form-group mb-2">
      <label class="font-weight-bold">Asunto del correo</label>
@@ -130,10 +134,10 @@
     </div>
     <div class="form-group mb-2">
      <label class="font-weight-bold">Mensaje a Enviar</label>
-     <textarea name="message" class="form-control" rows="6">Hola estimado {{ $client->name }}, le saludamos de parte de TWM para comunicarle que hay un nuevo avance. Puede revisarlo en el siguiente enlace: {{ route('avances.show',$avance->id) }}</textarea>
+     <textarea name="comment" class="form-control" rows="6">Hola estimado {{ $client->name }}, le saludamos de parte de TWM para comunicarle que hay un nuevo avance. Puede revisarlo en el siguiente enlace: {{ route('avances.show',$avance->id) }}</textarea>
     </div>   <br>
     <div class="form-group">
-     <input type="submit" name="send" class="btn btn-info" value="Enviar correo a {{ $client->name }}" />
+        <button type="submit" class="btn btn-primary">enviar Correo a {{ $client->email }}</button>
     </div>
    </form>                        </div>
 

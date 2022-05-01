@@ -69,14 +69,6 @@ class AvanceController extends Controller
         $post->project_id = $project_id;
         $post->save();
 
-       //     $file = $request->file('file') ;
-        //    $fileName = $path;
-         //   $destinationPath = public_path().'/images' ;
-          //  $file->move($destinationPath,$fileName);
-        //$avance = Avance::create($request->all());
-
-     //   return redirect()->route('projects.index'.'/'.[$project_id])
-      //      ->with('success','Avance agregado correctamente.');
             return redirect('projects/'.$project_id)->with('success','Avance agregado correctamente.');
     }
 
@@ -149,7 +141,7 @@ class AvanceController extends Controller
     {
           try {
             $avance = Avance::findOrFail($id);
-                    if($request->file != ''){     
+           if($request->file != ''){     
           //codigo para borrar un archivo 
             $base_path='storage/images/';
           if($post->file != ''  && $post->file != null){

@@ -110,5 +110,29 @@ class ProjectController extends Controller
             ->with('success','Proyecto borrado correctamente');
     }
 
+    public function sendPost(Request $request){
+
+        $this->validate($request, [
+                        'email' => 'required|email',
+                        'subject' => 'required',
+                        'comment' => 'required'
+                ]);
+                $subject =$request->subject;
+                $email=$request->email;
+                $comment=$request->comment ;
+
+        Mail::send('email', [
+                'email' => $email,
+                'subject' => $subject,
+                'comment' => $comment ],
+                function ($message) use ($email, $subject) {
+                        $message->from('dev@twm.ec', 'TWM');
+                        $message->to($email)
+                                ->subject($subject);
+        });
+
+        return back()->with('success', 'Notificacion enviada correctamente');
+
+    }
     
 }

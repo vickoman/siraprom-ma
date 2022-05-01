@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('projects', App\Http\Controllers\ProjectController::class);
     Route::resource('avances', App\Http\Controllers\AvanceController::class);
     Route::resource('send', App\Http\Controllers\SendController::class);
-    Route::post('send', 'SendController@send');
+    Route::get('/send', 'App\Http\Controllers\SendController@send')->name('send');
+    Route::post('/send', 'App\Http\Controllers\SendController@sendPost')->name('sendPost');
 
 });
