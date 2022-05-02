@@ -63,10 +63,17 @@
                     </div>
                   </div>
                   <div class="col-md-4 col-sm-12 col-xs-12 text-right">
+                    @if ( $project->estado  != "Finalizado") 
                     @can('avance-create')
                     <a class="btn btn-primary" href="{{ route('avances.create',['project_id' => $project->id]) }}" ><i class="bi bi-pencil-square"></i>  Nuevo avance</a>
                     @endcan
-
+                    @else
+                    @if (!isset($data->file))
+                    <a class="btn btn-primary" href="<?php echo url('/'); ?>/storage/zips/{{$project->final_file}}" ><i class="bi bi-pencil-square"></i>  Descargar Archivo</a>
+                        @else
+                        <p>Aun no hay un archivo final para descargar </p>
+                        @endif
+                    @endif
                     
                   </div>
                 </div>

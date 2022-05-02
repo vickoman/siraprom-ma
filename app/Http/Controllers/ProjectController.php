@@ -75,7 +75,7 @@ if($request->has('final_file')){
         $id=$project->id;
         $project = Project::find($id);
         $img_name= "proyecto_".$id.".zip";
-        $path = Storage::putFileAs('zips', request()->file('final_file'), $img_name);
+        $path = Storage::putFileAs('public/zips', request()->file('final_file'), $img_name);
         $project->final_file = $img_name;
         $project->update();
 }
@@ -117,11 +117,14 @@ if($request->has('final_file')){
             'estado' => 'required',
             'final_file' => 'nullable|mimes:zip|max:4096',
         ]);
+
+        $project = Project::find($id);
+        if($request->has('final_file')){
           //  $request->final_file->store('zips');
         $img_name= "proyecto_".$id.".zip";
-        $path = Storage::putFileAs('zips', request()->file('final_file'), $img_name);
+        $path = Storage::putFileAs('public/zips', request()->file('final_file'), $img_name);
         $request->final_file=$img_name;
-        $project = Project::find($id);
+}
 //        $project->update($request->all());
 
 
@@ -131,7 +134,6 @@ if($request->has('final_file')){
         $project->client_id = $request->client_id;
         $project->designer_id = $request->designer_id;
         $project->estado = $request->estado;
-        $project->final_file = $request->final_file;
         $project->update();
 
         return redirect()->route($this->path.'.index')
