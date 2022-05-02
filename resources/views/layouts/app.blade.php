@@ -118,6 +118,20 @@
   })
 </script>
 <script type="text/javascript">
+    $(".estado").change(function(){
+    
+change_estado();
+});
+    change_estado();
+    function change_estado(){
+        if($(".estado").val() == "Finalizado"){
+      $(".final_cont").show();
+    }else{
+      $(".final_cont").hide();
+    }
+    }
+</script>
+<script type="text/javascript">
 
  
 

@@ -32,7 +32,7 @@
                         </div>
                     @endif
 
-                    {!! Form::open(array('route' => 'projects.store','method'=>'POST')) !!}
+                    {!! Form::open(array('route' => 'projects.store','method'=>'POST', 'enctype'=>'multipart/form-data')) !!}
                     <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -66,6 +66,22 @@
                         <div class="form-group">
                             <strong>Cliente:</strong>
                             {!! Form::select('client_id', $clients->pluck('name', 'id'), null, [ 'class' => 'form-control', 'placeholder' => 'Selecciona cliente']) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Estado del proyecto:</strong>
+                            <select class="estado form-control" name="estado">
+                                <option value="Nuevo">Nuevo</option>
+                                <option value="En progreso">En progreso</option>
+                                <option value="Finalizado">Finalizado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group final_cont">
+                            <strong>Subir archivo Final del Proyecto</strong>
+                            <input type="file" name="final_file" id="final_file" class="form-control">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

@@ -32,7 +32,7 @@
                     </div>
                 @endif
 
-                {!! Form::model($project, ['method' => 'PATCH','route' => ['projects.update', $project->id]]) !!}
+                {!! Form::model($project, ['method' => 'PATCH','route' => ['projects.update', $project->id], 'enctype'=>'multipart/form-data']) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -75,7 +75,22 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Estado del proyecto:</strong>
+                            <select class="estado form-control" name="estado">
+                                <option value="Nuevo" {{ $project->estado == "Nuevo" ? 'selected':'' }}>Nuevo</option>
+                                <option value="En progreso" {{ $project->estado == "En progreso" ? 'selected':'' }}>En progreso</option>
+                                <option value="Finalizado"{{ $project->estado == "Finalizado" ? 'selected':'' }}>Finalizado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group final_cont">
+                            <strong>Subir archivo Final del Proyecto</strong>
+                            <input type="file" name="final_file" id="final_file" class="form-control" accept=".zip">
+                        </div>
+                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </div>

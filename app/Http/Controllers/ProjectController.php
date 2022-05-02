@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Avance;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 
 class ProjectController extends Controller
@@ -56,9 +58,27 @@ class ProjectController extends Controller
             'eta' => 'required',
             'client_id' => 'required',
             'designer_id' => 'required',
+            'estado' => 'required',
+            'final_file' => 'nullable|file|mimes:zip|max:4096',
         ]);
+        $project=new Project();
+        $project->title = $request->title;
+        $project->description = $request->description;
+        $project->eta = $request->eta;
+        $project->client_id = $request->client_id;
+        $project->designer_id = $request->designer_id;
+        $project->estado = $request->estado;
 
-        $project = Project::create($request->all());
+        $project->save();
+
+if($request->has('final_file')){
+        $id=$project->id;
+        $project = Project::find($id);
+        $img_name= "proyecto_".$id.".zip";
+        $path = Storage::putFileAs('zips', request()->file('final_file'), $img_name);
+        $project->final_file = $img_name;
+        $project->update();
+}
 
         return redirect()->route('projects.index')
             ->with('success','Project creado correctamente.');
@@ -94,10 +114,25 @@ class ProjectController extends Controller
             'eta' => 'required',
             'client_id' => 'required',
             'designer_id' => 'required',
+            'estado' => 'required',
+            'final_file' => 'nullable|mimes:zip|max:4096',
         ]);
-
+          //  $request->final_file->store('zips');
+        $img_name= "proyecto_".$id.".zip";
+        $path = Storage::putFileAs('zips', request()->file('final_file'), $img_name);
+        $request->final_file=$img_name;
         $project = Project::find($id);
-        $project->update($request->all());
+//        $project->update($request->all());
+
+
+        $project->title = $request->title;
+        $project->description = $request->description;
+        $project->eta = $request->eta;
+        $project->client_id = $request->client_id;
+        $project->designer_id = $request->designer_id;
+        $project->estado = $request->estado;
+        $project->final_file = $request->final_file;
+        $project->update();
 
         return redirect()->route($this->path.'.index')
             ->with('success','Proyecto actualizado correctamente.');

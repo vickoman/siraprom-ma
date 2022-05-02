@@ -45,7 +45,7 @@
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $project->title }}</td>
                                             <td >{{ $project->description }}</td>
-                                            <td></td>
+                                            <td><span class="{{ $project->estado }}">{{ $project->estado }}</span></td>
                                             <td  class="text-center">
                                                 @can('project-show')
                                             <a class="btn btn-info" href="{{ route('projects.show',$project->id) }}"><i class="bi bi-eye"></i> Revisar avances</a>

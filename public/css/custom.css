@@ -152,6 +152,9 @@ text-decoration: none;
   .font-weight-bold{
 font-weight: bold;
   }
+  .final_cont{
+display: none;
+  }
   @media screen and (min-width: 1400px){
 
 .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {

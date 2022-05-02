@@ -13,6 +13,8 @@ class Project extends Model
         'description', 
         'client_id', 
         'designer_id', 
-        'eta'
+        'eta',
+        'estado',
+        'final_file'
     ];
 }

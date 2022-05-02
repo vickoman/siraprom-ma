@@ -20,10 +20,12 @@ class CreateAdminUserSeeder extends Seeder
         $user = User::create([
             'name' => 'administrator', 
             'email' => 'admin@siraprom.com',
-            'password' => bcrypt('open$123')
+            'password' => bcrypt('123456')
         ]);
 
         $role = Role::create(['name' => 'Super-Admin', 'color' => '#ff9a86']);
+        $role = Role::create(['name' => 'Disenador', 'color' => '#ff0000']);
+        $role = Role::create(['name' => 'Cliente', 'color' => '#0000ff']);
         $user->assignRole([$role->id]);
     }
 }
