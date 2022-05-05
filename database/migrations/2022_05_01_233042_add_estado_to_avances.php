@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('projects', function (Blueprint $table) {
-            //
+        Schema::table('avances', function (Blueprint $table) {
+            $table->string('estado')->nullable(false)->default(null);
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('projects', function (Blueprint $table) {
-            //
+        Schema::table('avances', function (Blueprint $table) {
+            $table->dropColumn('estado');
         });
     }
 };

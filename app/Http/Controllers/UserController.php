@@ -24,8 +24,8 @@ class UserController extends Controller
     }
     // show index
     public function index() {
-        $data = User::all(); // Get users except logged user
-        return view($this->path.'.index', compact('data'));
+        $data = User::paginate(10);; 
+                return view($this->path.'.index', compact('data'));
     }
     // show create form
     public function create() {

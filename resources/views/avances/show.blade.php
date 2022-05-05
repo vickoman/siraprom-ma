@@ -37,7 +37,9 @@
                        <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Preview:</strong>
-                            <div class="preview"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}"></div>
+                            @if($avance->file)
+                            <div class="preview_inner"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}"></div>
+                            @endif
                         </div>
                     </div>
 

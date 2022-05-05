@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Avance;
 
 class Project extends Model
 {
@@ -17,4 +18,7 @@ class Project extends Model
         'estado',
         'final_file'
     ];
+        public function Avance() {
+        return $this->hasMany('Avance');
+    }
 }

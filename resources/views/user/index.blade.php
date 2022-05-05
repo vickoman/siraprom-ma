@@ -71,6 +71,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                             <div> {{ $data->links() }}</div>
                         @else
                             <p>No hay users aun en la base de datos</p>
                         @endif

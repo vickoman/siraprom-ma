@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\User;
 use App\Models\Avance;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 
@@ -24,7 +26,28 @@ class AvanceController extends Controller
      */
     public function index()
     {
-        //
+
+
+        $projects = Project::latest();
+         if(Auth::user()->hasRole('Disenador')){
+              $projects=$projects->where('designer_id', Auth::user()->id)->pluck('id', 'name');
+
+          }
+        if(Auth::user()->hasRole('Cliente')){
+              $projects=$projects->where('client_id', Auth::user()->id)->pluck('id', 'name');
+          }
+
+
+            $avances = Avance::latest();
+         if(Auth::user()->hasRole('Disenador')){
+              $avances=$avances->whereIn('project_id', $projects->id)->paginate(5);
+          }
+        if(Auth::user()->hasRole('Cliente')){
+              $avances=$avances->whereIn('project_id', $projects->id)->paginate(5);
+          }
+          $avances = $avances->paginate(5);
+        return view($this->path.'.index',compact('avances'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

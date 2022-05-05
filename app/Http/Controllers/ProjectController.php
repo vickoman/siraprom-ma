@@ -32,10 +32,10 @@ class ProjectController extends Controller
 
         $projects = Project::latest();
          if(Auth::user()->hasRole('Disenador')){
-              $projects=$projects->where('designer_id', Auth::user()->id);
+              $projects=$projects->where('designer_id', Auth::user()->id)->paginate(5);
           }
         if(Auth::user()->hasRole('Cliente')){
-              $projects=$projects->where('client_id', Auth::user()->id);
+              $projects=$projects->where('client_id', Auth::user()->id)->paginate(5);
           }
           $projects = $projects->paginate(5);
         return view($this->path.'.index',compact('projects'))
@@ -99,7 +99,6 @@ if($request->has('final_file')){
         $designer = User::find($project->designer_id);
         $client = User::find($project->client_id);
         $designers = User::whereHas("roles", function($q){ $q->where("name", "Disenador"); })->get();
-
         $clients = User::whereHas("roles", function($q){ $q->where("name", "Cliente"); })->get();
 
 

@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="mr-5">{{ __('Avances') }}</span>
-                    <a href={{ route('avances.create')}}>Añadir nuevo avance</a>
+                    <!--<a href={{ route('avances.create')}}>Añadir nuevo avance</a>-->
                 </div>
 
                 <div class="card-body">
@@ -33,8 +33,10 @@
                                 <thead>
                                     <tr>
                                         <td>#</td>
-                                        <td>Titlo</td>
+                                        <td>Titulo del Avance</td>
+                                        <td>Proyecto Principal</td>
                                         <td>Descripcion</td>
+                                        <td>Creado</td>
                                         <td  class="text-center">Acciones</td>
                                     </tr>
                                 </thead>
@@ -43,7 +45,9 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $avance->name }}</td>
+                                            <td>{{ $avance->project->title }}</td>
                                             <td >{{ $avance->description }}</td>
+                                            <td >{{ $avance->created_at }}</td>
                                             <td  class="text-center">
                                             <a class="btn btn-info" href="{{ route('avances.show',$avance->id) }}"><i class="bi bi-eye"></i> Ver</a>
                                                 @can('avance-edit')
