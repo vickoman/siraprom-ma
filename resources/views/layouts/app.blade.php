@@ -107,8 +107,7 @@
    </script>
    <script type="text/javascript">
       $(".estado").change(function(){
-      
-      change_estado();
+            change_estado();
       });
       change_estado();
       function change_estado(){
@@ -116,6 +115,22 @@
         $(".final_cont").show();
       }else{
         $(".final_cont").hide();
+      }
+      }
+
+
+      $(".form_check select").change(function(){
+            change_estado2();
+      });
+      change_estado2();
+      function change_estado2(){
+          if($(".form_check select").val() == "Revisado"){
+        $(".form_check .btn_rev").show();
+        $(".form_check .btn_com").hide();
+      }
+      if($(".form_check select").val() == "cambio"){
+        $(".form_check .btn_rev").hide();
+        $(".form_check .btn_com").show();
       }
       }
    </script>

@@ -34,15 +34,36 @@
                             {{ $avance->description }}
                         </div>
                     </div>
-                       <div class="col-xs-12 col-sm-12 col-md-12">
+                       <div class="col-xs-12 col-sm-9 col-md-9">
                         <div class="form-group">
                             <strong>Preview:</strong>
                             @if($avance->file)
-                            <div class="preview_inner"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}"></div>
+                            <div class="preview_inner" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}"></div>
                             @endif
                         </div>
+
+
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-3 col-md-3 form_check">
+                        {!! Form::model($avance, ['method' => 'PATCH','route' => ['avances.update', $avance->id], 'enctype'=>'multipart/form-data' ]) !!}
+                        <div class="form-group">
+                            <strong>Opciones del cliente :</strong>
+                            <select class="estado form-control" name="estado">
+                                <option>Seleccionar una opcion</option>
+                                <option value="Revisado" >Revisado</option>
+                                <option value="cambio" >solicitar Cambio</option>
+                            </select>
+                        </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
+                        <button type="submit" class="btn btn-primary btn_rev">Indicar revisado y Ok</button>
+                        <a href="#" class="btn btn-primary btn_com">Ir al ingreso de comentarios</a>
                     </div>
 
+                        {!! Form::close() !!}
+                    </div>
+
+                    
                 </div>
                 </div>
             </div>
