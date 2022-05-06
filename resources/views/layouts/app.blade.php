@@ -29,7 +29,7 @@
       <div id="app" class="{{ Request::path() }}">
          <?php 
             if (Auth::check()) {
-             ?>
+         ?>
          <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                <a class="navbar-brand" href="{{ url('/') }}">
@@ -96,13 +96,13 @@
    <script>
       const canvas = document.getElementById('canvas')
       const starback = new Starback(canvas, {
-          type: 'dot',
-          quantity: 200,
-          direction: 225,
-          backgroundColor: ['#BFB5C1', '#BFB5C1'],
-          randomOpacity: true,
-          speed: 0.1,
-          starSize: 1,
+         type: 'dot',
+         quantity: 200,
+         direction: 225,
+         backgroundColor: ['#BFB5C1', '#BFB5C1'],
+         randomOpacity: true,
+         speed: 0.1,
+         starSize: 1,
       })
    </script>
    <script type="text/javascript">
@@ -111,11 +111,11 @@
       });
       change_estado();
       function change_estado(){
-          if($(".estado").val() == "Finalizado"){
-        $(".final_cont").show();
-      }else{
-        $(".final_cont").hide();
-      }
+         if($(".estado").val() == "Finalizado"){
+            $(".final_cont").show();
+         }else{
+            $(".final_cont").hide();
+         }
       }
 
 
@@ -124,53 +124,45 @@
       });
       change_estado2();
       function change_estado2(){
-          if($(".form_check select").val() == "Revisado"){
-        $(".form_check .btn_rev").show();
-        $(".form_check .btn_com").hide();
+         if($(".form_check select").val() == "Revisado"){
+         $(".form_check .btn_rev").show();
+         $(".form_check .btn_com").hide();
       }
       if($(".form_check select").val() == "cambio"){
-        $(".form_check .btn_rev").hide();
-        $(".form_check .btn_com").show();
+         $(".form_check .btn_rev").hide();
+         $(".form_check .btn_com").show();
       }
       }
    </script>
    <script type="text/javascript">
       $('.show_confirm').click(function(event) {
-           var form =  $(this).closest("form");
-           var name = $(this).data("name");
-           event.preventDefault();
-           swal({
-               title: `Estas seguro de borrar este registro?`,
-               text: "Si lo borras, no podras recuperalo.",
-               icon: "warning",
-               buttons: true,
-               dangerMode: true,
-               buttons: ["No, cancelar!", "Ok"],
-           })
-      
-           .then((willDelete) => {
-      
-             if (willDelete) {
-      swal("El registro a sido borrado", {
-       icon: "success",
+         var form =  $(this).closest("form");
+         var name = $(this).data("name");
+         event.preventDefault();
+         swal({
+            title: `Estas seguro de borrar este registro?`,
+            text: "Si lo borras, no podras recuperalo.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            buttons: ["No, cancelar!", "Ok"],
+         })
+
+         .then((willDelete) => {
+            if (willDelete) {
+               swal("El registro a sido borrado", {
+                  icon: "success",
+            });
+            form.submit();
+            }
+         });
       });
-               form.submit();
-      
-             }
-      
-           });
-      
-       });
-      
-      
-      
    </script>
    <script type="text/javascript">
       $('.datepicker').datepicker({
-          format: 'yyyy-mm-dd',
-      startDate: '0d'
+         format: 'yyyy-mm-dd',
+         startDate: '0d'
       });
-      
    </script>
    <script type='text/javascript'>
       //  Evitar click derecho
@@ -178,16 +170,14 @@
    </script>
    <script type="text/javascript">
       $(document).ready(function (e) {
-      $('#file').change(function(){    
-      let reader = new FileReader();
-       reader.onload = (e) => { 
-        $('#preview img').attr('src', e.target.result); 
-      }
-      reader.readAsDataURL(this.files[0]); 
-      
+         $('#file').change(function(){
+            let reader = new FileReader();
+            reader.onload = (e) => { 
+               $('#preview img').attr('src', e.target.result); 
+            }
+            reader.readAsDataURL(this.files[0]); 
+         });
       });
-      });
-      
    </script>
    @yield('javascript')
 </html>
