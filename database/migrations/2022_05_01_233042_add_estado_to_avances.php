@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('avances', function (Blueprint $table) {
-            $table->string('estado')->nullable(false)->default(null);
+            $table->string('estado')->nullable(true)->default(null);
         });
     }
 
