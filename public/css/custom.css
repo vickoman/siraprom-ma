@@ -164,3 +164,8 @@ display: none;
   max-width: 1360px;
 }
 }
+
+#theElement {
+  position: relative;
+  display: inline-block;
+}

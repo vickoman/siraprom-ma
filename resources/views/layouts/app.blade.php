@@ -17,12 +17,14 @@
       <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="{{ URL::asset('js/jquery.hotspot.js') }}" defer></script>
       <!-- Fonts -->
       <link rel="dns-prefetch" href="//fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
       <!-- Styles -->
       <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
       <link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
+      <link href="{{ URL::asset('css/jquery.hotspot.css') }}" rel="stylesheet">
    </head>
    <body>
       <canvas id="canvas"></canvas>

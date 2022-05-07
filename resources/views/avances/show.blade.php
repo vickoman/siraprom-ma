@@ -38,7 +38,7 @@
                         <div class="form-group">
                             <strong>Preview:</strong>
                             @if($avance->file)
-                            <div class="preview_inner" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}"></div>
+                            <div class="preview_inner" id="theElement" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}"></div>
                             @endif
                         </div>
 
@@ -57,7 +57,7 @@
                         </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                         <button type="submit" class="btn btn-primary btn_rev">Indicar revisado y Ok</button>
-                        <a href="#" class="btn btn-primary btn_com">Ir al ingreso de comentarios</a>
+                        <a href="javascript:void(0)" class="btn btn-primary btn_com">Ir al ingreso de comentarios</a>
                     </div>
 
                         {!! Form::close() !!}
@@ -70,4 +70,29 @@
         </div>
     </div>
 </div>
+@section('javascript')
+    <script>
+        //$(document).ready(function () {
+        $('.btn_com').click(function () {
+            $('#theElement').hotspot({
+                    mode: 'admin',
+                    headerTitle: "Haz click en cualquier parte de la imagen para dejar un comentario",
+                    schema: [
+                        {
+                            'property': 'Titulo',
+                            'default': ""
+                        },
+                        {
+                            'property': 'Mensaje',
+                            'default': '',
+                        }
+                    ],
+                    afterRemove: () => {
+                        window.location.reload();
+                    }
+                });
+        });
+    </script>
+@stop
+@endse
 @endsection
