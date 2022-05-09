@@ -91,8 +91,41 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
    <script src="{{ URL::asset('js/app.js') }}" defer></script>
    <script src="{{ URL::asset('js/custom.js') }}" defer></script>
-   <script></script>
+
+   <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+   <script src="{{ URL::asset('js/jquery.easypin.js') }}" defer></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <script type="text/javascript"></script>
+
+
+   <script type="text/javascript">
+    jQuery(document).ready(function($){
+
+        var $easyInstance = $('.pin').easypin({
+             markerSrc: '{{ URL::asset("images/marker.png") }}',
+             editSrc: '{{ URL::asset("images/edit.png") }}',
+             deleteSrc: '{{ URL::asset("images/remove.png") }}',
+            init: '{"example_image1":{"0":{"content":"Captan America","undefined":"save pin!","coords":{"lat":"530","long":"179"}},"1":{"content":"Hulk","undefined":"save pin!","coords":{"lat":"56","long":"133"}},"2":{"content":"Hawkeye","undefined":"save pin!","coords":{"lat":"173","long":"221"}},"3":{"content":"Iron Man","undefined":"save pin!","coords":{"lat":"280","long":"161"}},"canvas":{"src":"<?php echo url('/'); ?>/storage/images/{{$avance->file}}","width":"","height":""}}}',
+            done: function(element) {
+                console.log(element);
+                return true;
+            }
+        });
+
+        $easyInstance.easypin.event( "get.coordinates", function($instance, data, params ) {
+
+            console.log( data, params);
+
+        });
+
+        $( ".coords" ).click(function( event ) {
+            $easyInstance.easypin.fire( "get.coordinates", {param1: 1, param2: 2, param3: 3}, function(data) {
+                return JSON.stringify(data);
+            });
+        });
+
+    });
+ </script>
    @yield('javascript')
 </html>
 

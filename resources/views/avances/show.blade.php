@@ -38,7 +38,18 @@
                         <div class="form-group">
                             <strong>Preview:</strong>
                             @if($avance->file)
-                            <div class="preview_inner" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}"></div>
+                            <div class="preview_inner pinParent" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}" class="pin easypin-target" easypin-id="example_image1">
+        <!-- dialog window -->
+        <div class="easy-modal" style="display:none;" modal-position="free">
+            type something: <input name="content" type="text">
+            <input type="button" value="save pin!" class="easy-submit">
+        </div>
+
+        <!-- popover -->
+        <div style="display:none;" width="130" shadow="true" popover>
+            <div style="width:100%;text-align:center;">{[content]}</div>
+        </div>
+                            </div>
                             @endif
                         </div>
 
