@@ -98,34 +98,7 @@
    <script type="text/javascript"></script>
 
 
-   <script type="text/javascript">
-    jQuery(document).ready(function($){
-
-        var $easyInstance = $('.pin').easypin({
-             markerSrc: '{{ URL::asset("images/marker.png") }}',
-             editSrc: '{{ URL::asset("images/edit.png") }}',
-             deleteSrc: '{{ URL::asset("images/remove.png") }}',
-            init: '{"example_image1":{"0":{"content":"Captan America","undefined":"save pin!","coords":{"lat":"530","long":"179"}},"1":{"content":"Hulk","undefined":"save pin!","coords":{"lat":"56","long":"133"}},"2":{"content":"Hawkeye","undefined":"save pin!","coords":{"lat":"173","long":"221"}},"3":{"content":"Iron Man","undefined":"save pin!","coords":{"lat":"280","long":"161"}},"canvas":{"src":"<?php echo url('/'); ?>/storage/images/{{$avance->file}}","width":"","height":""}}}',
-            done: function(element) {
-                console.log(element);
-                return true;
-            }
-        });
-
-        $easyInstance.easypin.event( "get.coordinates", function($instance, data, params ) {
-
-            console.log( data, params);
-
-        });
-
-        $( ".coords" ).click(function( event ) {
-            $easyInstance.easypin.fire( "get.coordinates", {param1: 1, param2: 2, param3: 3}, function(data) {
-                return JSON.stringify(data);
-            });
-        });
-
-    });
- </script>
+ 
    @yield('javascript')
 </html>
 
