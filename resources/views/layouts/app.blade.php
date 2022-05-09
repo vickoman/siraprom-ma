@@ -1,6 +1,4 @@
 <!doctype html>
-
-
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
    <head>
       <meta charset="utf-8">
@@ -9,8 +7,6 @@
       <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>{{ config('app.name', 'Laravel') }}</title>
       <!-- Scripts -->
-      <script src="{{ URL::asset('js/app.js') }}" defer></script>
-      <script src="{{ URL::asset('js/custom.js') }}" defer></script>
       <link rel="icon" href="https://twm.ec/wp-content/uploads/2021/11/68914796_427655731202950_4963250347398135808_n-150x150.jpg" sizes="32x32">
       <link rel="icon" href="https://twm.ec/wp-content/uploads/2021/11/68914796_427655731202950_4963250347398135808_n-300x300.jpg" sizes="192x192">
       <link rel="apple-touch-icon" href="https://twm.ec/wp-content/uploads/2021/11/68914796_427655731202950_4963250347398135808_n-300x300.jpg">
@@ -31,7 +27,7 @@
       <div id="app" class="{{ Request::path() }}">
          <?php 
             if (Auth::check()) {
-         ?>
+            ?>
          <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                <a class="navbar-brand" href="{{ url('/') }}">
@@ -88,98 +84,20 @@
          </main>
       </div>
    </body>
+   <!-- <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
    <script src="https://unpkg.com/starback@2.0.1/dist/starback.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   <script>
-      const canvas = document.getElementById('canvas')
-      const starback = new Starback(canvas, {
-         type: 'dot',
-         quantity: 200,
-         direction: 225,
-         backgroundColor: ['#BFB5C1', '#BFB5C1'],
-         randomOpacity: true,
-         speed: 0.1,
-         starSize: 1,
-      })
-   </script>
-   <script type="text/javascript">
-      $(".estado").change(function(){
-            change_estado();
-      });
-      change_estado();
-      function change_estado(){
-         if($(".estado").val() == "Finalizado"){
-            $(".final_cont").show();
-         }else{
-            $(".final_cont").hide();
-         }
-      }
+   <script src="{{ URL::asset('js/app.js') }}" defer></script>
+   <script src="{{ URL::asset('js/custom.js') }}" defer></script>
+
+   <script type="text/javascript"></script>
 
 
-      $(".form_check select").change(function(){
-            change_estado2();
-      });
-      change_estado2();
-      function change_estado2(){
-         if($(".form_check select").val() == "Revisado"){
-         $(".form_check .btn_rev").show();
-         $(".form_check .btn_com").hide();
-      }
-      if($(".form_check select").val() == "cambio"){
-         $(".form_check .btn_rev").hide();
-         $(".form_check .btn_com").show();
-      }
-      }
-   </script>
-   <script type="text/javascript">
-      $('.show_confirm').click(function(event) {
-         var form =  $(this).closest("form");
-         var name = $(this).data("name");
-         event.preventDefault();
-         swal({
-            title: `Estas seguro de borrar este registro?`,
-            text: "Si lo borras, no podras recuperalo.",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            buttons: ["No, cancelar!", "Ok"],
-         })
-
-         .then((willDelete) => {
-            if (willDelete) {
-               swal("El registro a sido borrado", {
-                  icon: "success",
-            });
-            form.submit();
-            }
-         });
-      });
-   </script>
-   <script type="text/javascript">
-      $('.datepicker').datepicker({
-         format: 'yyyy-mm-dd',
-         startDate: '0d'
-      });
-   </script>
-   <script type='text/javascript'>
-      //  Evitar click derecho
-      //  document.oncontextmenu = function(){return false}
-   </script>
-   <script type="text/javascript">
-      $(document).ready(function (e) {
-         $('#file').change(function(){
-            let reader = new FileReader();
-            reader.onload = (e) => { 
-               $('#preview img').attr('src', e.target.result); 
-            }
-            reader.readAsDataURL(this.files[0]); 
-         });
-      });
-   </script>
+ 
    @yield('javascript')
 </html>
 

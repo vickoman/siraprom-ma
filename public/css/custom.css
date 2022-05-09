@@ -158,6 +158,18 @@ display: none;
   .form_check .btn{
 display: none;
   }
+  .preview_inner{
+    position: relative;
+  }
+  .preview_inner img{
+    width: 100%;
+  }
+  .modalParent,.popupOpacityLayer{
+    top: 0;
+  }
+  .pinCanvas{
+    top: 0;
+  }
   @media screen and (min-width: 1400px){
 
 .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
