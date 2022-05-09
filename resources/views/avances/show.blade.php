@@ -52,14 +52,20 @@
                             <select class="estado form-control" name="estado">
                                 <option>Seleccionar una opcion</option>
                                 <option value="Revisado" >Revisado</option>
-                                <option value="cambio" >solicitar Cambio</option>
+                                <option value="cambio" >Solicitar cambios</option>
                             </select>
                         </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                         <button type="submit" class="btn btn-primary btn_rev">Indicar revisado y Ok</button>
                         <a href="#" class="btn btn-primary btn_com">Ir al ingreso de comentarios</a>
                     </div>
-
+                    <div class="alert alert-success mt-2">
+                        <strong>Nota:</strong>
+                        <ul>
+                            <li>Si no quiere solicitar un cambio y todo esta bien, escoja la opcion de revisado</li>
+                            <li>Si quiere solicitar cambios escoja la opcion "Solicitar cambios" y lo dirigira a la seccion de comentarios</li>
+                        </ul>
+                    </div>
                         {!! Form::close() !!}
                     </div>
 
