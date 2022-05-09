@@ -41,7 +41,7 @@
                             <div class="preview_inner" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}" class="pin" easypin-id="example_image1"  /></div>
                             @endif
                         </div>
-
+                        <input class="coords btn  btn-primary" type="button" value="Guardar comentarios" />
                     </div>
                     
                     <div class="col-xs-12 col-sm-3 col-md-3 form_check">
@@ -62,7 +62,6 @@
                         {!! Form::close() !!}
                     </div>
 
-                    
                 </div>
                 </div>
             </div>
@@ -75,7 +74,7 @@
         <h3>type name of hero</h3>
         <input type="text" class="form-control" name="content" placeholder="type">
         <br>
-        <button type="button" class="btn btn-primary easy-submit">Save Content</button>
+        <button type="button" class="btn btn-primary easy-submit">Guardar comentario</button>
     </form>
 </div>
 <div style="display:none;" width="130" shadow="true" popover="">
@@ -83,22 +82,30 @@
 </div>
 @section('javascript')
 <script>
-    // $('.btn_com').click(function(e){
-        
-    // });
     $(document).ready(function(){
-        $('.pin').easypin({
-            init: '{"jizLvySUzI":{"0":{"content":"Captan America","coords":{"lat":"534","long":"189"}},"canvas":{"src":"img/avengers.jpg","width":"1000","height":"562"}}}',
-                modalWidth: 300,
-                done: function(element) {
-                    if($('input[name="content"]', element).val() != '') {
-                        return true;
-                    }
-                    return false;
+        var $easyInstance = $('.pin').easypin({
+            init: '{"example_image1":{}}',
+            modalWidth: 300,
+            markerSrc: '{{ URL::asset("images/marker.png") }}',
+            editSrc: '{{ URL::asset("images/edit.png") }}',
+            deleteSrc: '{{ URL::asset("images/remove.png") }}',
+            done: function(element) {
+                if($('input[name="content"]', element).val() != '') {
+                    return true;
                 }
+                return false;
+            }
+        });
+
+        $easyInstance.easypin.event( "get.coordinates", function($instance, data, params ) {
+            console.log( data, params);
+        });
+        $( ".coords" ).click(function( event ) {
+            $easyInstance.easypin.fire( "get.coordinates", {param1: 1, param2: 2, param3: 3}, function(data) {
+                return JSON.stringify(data);
             });
         });
-        
+    });
 </script>
 @stop
 @endsection
