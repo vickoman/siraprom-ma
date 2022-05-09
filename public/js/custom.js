@@ -25,6 +25,7 @@ $(document).ready(function (e) {
          }else{
             $(".final_cont").hide();
          }
+
       }
 
 
@@ -41,6 +42,10 @@ $(document).ready(function (e) {
       if($(".form_check select").val() == "cambio"){
          $(".form_check .btn_rev").hide();
          $(".form_check .btn_com").show();
+      }
+      if($(".estado").val() == ""){
+                  $(".form_check .btn_rev").hide();
+         $(".form_check .btn_com").hide();
       }
       }
 
