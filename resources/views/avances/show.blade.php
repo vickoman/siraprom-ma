@@ -41,8 +41,8 @@
                             <div class="preview_inner pinParent" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}" class="pin easypin-target" easypin-id="example_image1">
         <!-- dialog window -->
         <div class="easy-modal" style="display:none;" modal-position="free">
-            type something: <input name="content" type="text">
-            <input type="button" value="save pin!" class="easy-submit">
+            Escriba el avance: <input name="content" type="text">
+            <input type="button" value="Actualizar pin!" class="easy-submit btn btn-primary">
         </div>
 
         <!-- popover -->
@@ -53,6 +53,7 @@
                             @endif
                         </div>
 
+        <input class="coords btn  btn-primary" type="button" value="Get coordinates!" />
 
                     </div>
                     
@@ -95,7 +96,7 @@
              markerSrc: '{{ URL::asset("images/marker.png") }}',
              editSrc: '{{ URL::asset("images/edit.png") }}',
              deleteSrc: '{{ URL::asset("images/remove.png") }}',
-            init: '{"example_image1":{"0":{"content":"Captan America","undefined":"save pin!","coords":{"lat":"530","long":"179"}},"1":{"content":"Hulk","undefined":"save pin!","coords":{"lat":"56","long":"133"}},"2":{"content":"Hawkeye","undefined":"save pin!","coords":{"lat":"173","long":"221"}},"3":{"content":"Iron Man","undefined":"save pin!","coords":{"lat":"280","long":"161"}},"canvas":{"src":"<?php echo url('/'); ?>/storage/images/{{$avance->file}}","width":"","height":""}}}',
+            init: '{"example_image1":{}}',
             done: function(element) {
                 console.log(element);
                 return true;

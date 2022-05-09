@@ -167,6 +167,9 @@ display: none;
   .modalParent,.popupOpacityLayer{
     top: 0;
   }
+  .pinCanvas{
+    top: 0;
+  }
   @media screen and (min-width: 1400px){
 
 .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
