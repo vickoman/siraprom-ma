@@ -38,10 +38,9 @@
                         <div class="form-group">
                             <strong>Preview:</strong>
                             @if($avance->file)
-                            <div class="preview_inner" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}"></div>
+                            <div class="preview_inner" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}" class="pin" easypin-id="example_image1"  /></div>
                             @endif
                         </div>
-
 
                     </div>
                     
@@ -57,7 +56,7 @@
                         </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                         <button type="submit" class="btn btn-primary btn_rev">Indicar revisado y Ok</button>
-                        <a href="#" class="btn btn-primary btn_com">Ir al ingreso de comentarios</a>
+                        <a href="javascript:void(0)" class="btn btn-primary btn_com">Ir al ingreso de comentarios</a>
                     </div>
 
                         {!! Form::close() !!}
@@ -70,4 +69,36 @@
         </div>
     </div>
 </div>
+
+<div class="easy-modal" style="display:none;" modal-position="free">
+    <form>
+        <h3>type name of hero</h3>
+        <input type="text" class="form-control" name="content" placeholder="type">
+        <br>
+        <button type="button" class="btn btn-primary easy-submit">Save Content</button>
+    </form>
+</div>
+<div style="display:none;" width="130" shadow="true" popover="">
+    <div style="width:100%;text-align:center;">{[content]}</div>
+</div>
+@section('javascript')
+<script>
+    // $('.btn_com').click(function(e){
+        
+    // });
+    $(document).ready(function(){
+        $('.pin').easypin({
+            init: '{"jizLvySUzI":{"0":{"content":"Captan America","coords":{"lat":"534","long":"189"}},"canvas":{"src":"img/avengers.jpg","width":"1000","height":"562"}}}',
+                modalWidth: 300,
+                done: function(element) {
+                    if($('input[name="content"]', element).val() != '') {
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        });
+        
+</script>
+@stop
 @endsection
