@@ -181,4 +181,18 @@ class AvanceController extends Controller
             return "Fatal error - " . $e->getMessage();
         }
     }
+
+    /**
+     *  Guardar comentarios de forma asincrona
+     */
+    public function save_comment(Request $request){
+        try {
+            $avance = Avance::findOrFail($request->id);
+            $avance->comentarios = $request->data;
+            $avance->update();
+            return "saved!";
+        } catch(Exception $e) {
+            return "Fatal error - " . $e->getMessage();
+        }
+    }
 }
