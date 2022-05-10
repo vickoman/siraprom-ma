@@ -38,7 +38,7 @@
                         <div class="form-group">
                             <strong>Preview:</strong>
                             @if($avance->file)
-                            <div class="preview_inner" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}" class="pin" easypin-id="example_image1"  /></div>
+                            <div class="preview_inner" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}" class="pin" easypin-id="image-{{ $avance->id }}"  /></div>
                             @endif
                         </div>
                         <input class="coords btn  btn-primary" type="button" value="Guardar comentarios" />
@@ -58,6 +58,7 @@
                         <button type="submit" class="btn btn-primary btn_rev">Indicar revisado y Ok</button>
                         <a href="javascript:void(0)" class="btn btn-primary btn_com">Ir al ingreso de comentarios</a>
                     </div>
+                    <input type="hidden" name="avance-{{$avance->id}}" id="avance-{{$avance->id}}" value="{{$avance->comentarios}}" />
 
                         {!! Form::close() !!}
                     </div>
@@ -84,7 +85,7 @@
 <script>
     $(document).ready(function(){
         var $easyInstance = $('.pin').easypin({
-            init: '{"example_image1":{}}',
+            init: $('#avance-{{$avance->id}}').val() || null,
             modalWidth: 300,
             markerSrc: '{{ URL::asset("images/marker.png") }}',
             editSrc: '{{ URL::asset("images/edit.png") }}',
@@ -96,13 +97,24 @@
                 return false;
             }
         });
-
         $easyInstance.easypin.event( "get.coordinates", function($instance, data, params ) {
-            console.log( data, params);
+            console.log( data);
         });
         $( ".coords" ).click(function( event ) {
-            $easyInstance.easypin.fire( "get.coordinates", {param1: 1, param2: 2, param3: 3}, function(data) {
-                return JSON.stringify(data);
+            $easyInstance.easypin.fire( "get.coordinates", function(data) {
+                const dataToSave = JSON.stringify(data);
+                $.ajax({
+                    url: '{{ route('save_comment') }}',
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        id: '{{$avance->id}}',
+                        data: Object.keys(data).length > 0 ? dataToSave : null
+                    },
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
             });
         });
     });
