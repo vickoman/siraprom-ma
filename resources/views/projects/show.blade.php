@@ -105,7 +105,7 @@
                               <td>{{ $avance->id }}</td>
                               <td>{{ $avance->name }}</td>
                               <td >{{ $avance->description }}</td>
-                              <td></td>
+                              <td>{{ $avance->estado }}</td>
                               <td  class="text-center">
                                  <a class="btn btn-info" href="{{ route('avances.show',$avance->id) }}"><i class="bi bi-eye"></i> Ver</a>
                                  @can('avance-edit')

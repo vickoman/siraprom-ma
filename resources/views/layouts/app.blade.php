@@ -127,9 +127,15 @@
       function change_estado2(){
          if($(".form_check select").val() == "Revisado"){
          $(".form_check .btn_rev").show();
+             setTimeout(function() { 
+         $(".preview_inner").addClass("blocked");
+         $(".preview_inner img").removeClass("pin easypin-target");
+      });
          $(".form_check .btn_com").hide();
       }
-      if($(".form_check select").val() == "cambio"){
+      if($(".form_check select").val() == "Cambios Solicitados"){
+         $(".preview_inner").removeClass("blocked");
+         $(".preview_inner img").addClass("pin easypin-target");
          $(".form_check .btn_rev").hide();
          $(".form_check .btn_com").show();
       }

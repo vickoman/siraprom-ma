@@ -149,6 +149,7 @@ class AvanceController extends Controller
 }
         $post->name = $request->name;
         $post->description = $request->description;
+        $post->estado = $request->estaod;
         $post->update();
 
             return redirect()->back()->with('success','Avance actualizado correctamente');
@@ -189,6 +190,7 @@ class AvanceController extends Controller
         try {
             $avance = Avance::findOrFail($request->id);
             $avance->comentarios = $request->data;
+            $avance->estado = $request->estado;
             $avance->update();
             return "saved!";
         } catch(Exception $e) {

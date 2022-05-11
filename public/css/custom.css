@@ -187,6 +187,23 @@ background-position: center !important;
     background: rgb(60, 17, 72) none repeat scroll 0% 0% !important;
 box-shadow: rgba(247, 206, 26,.6) 6px 6px 5px 0px !important;
   }
+  .blocked .easy-marker {
+  pointer-events: none;
+  cursor: pointer !important;
+}
+.disenador_blocked  .easy-marker, .disenador_blocked  .easy-tools  {
+  pointer-events: none !important;
+  cursor: pointer !important;
+}
+ .disenador_blocked  .easy-tools  {
+  display: none;
+ }
+.blocked .easy-tools{
+  display: none;
+}
+
+
+
   @media screen and (min-width: 1400px){
 
 .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {

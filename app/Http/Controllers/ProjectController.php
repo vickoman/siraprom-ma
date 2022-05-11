@@ -32,10 +32,10 @@ class ProjectController extends Controller
 
         $projects = Project::latest();
          if(Auth::user()->hasRole('Disenador')){
-              $projects=$projects->where('designer_id', Auth::user()->id)->paginate(5);
+              $projects=$projects->where('designer_id', Auth::user()->id);
           }
         if(Auth::user()->hasRole('Cliente')){
-              $projects=$projects->where('client_id', Auth::user()->id)->paginate(5);
+              $projects=$projects->where('client_id', Auth::user()->id);
           }
           $projects = $projects->paginate(5);
         return view($this->path.'.index',compact('projects'))
