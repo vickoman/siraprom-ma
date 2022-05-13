@@ -45,6 +45,23 @@
         });
     });
 </script>
+<script type='text/javascript'>
+
+    $(document).ready(function(){
+{
+  if( window.localStorage )
+  {
+    if( !localStorage.getItem('firstLoad') )
+    {
+      localStorage['firstLoad'] = true;
+      window.location.reload();
+    }  
+    else
+      localStorage.removeItem('firstLoad');
+  }
+    });
+
+</script>
 <div class="container">
     <div class="row justify-content-center">
     <div class="col-md-3 rounded-3">
