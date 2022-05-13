@@ -29,7 +29,7 @@
          console.log("Hi there!");
         });
 
-        $(this).on('load', function() {
+        $('.preview_inner img').on('load', function() {
 console.log("Hi there2");
             loadedImgNum += 1;
             // show loaded image
