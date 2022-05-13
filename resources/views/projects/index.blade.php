@@ -31,9 +31,10 @@
                      <thead>
                         <tr>
                            <td>#</td>
-                           <td>Titulo</td>
+                           <td>@sortablelink('title', 'Titulo')</td>
                            <td>Descripcion</td>
-                           <td class="text-center">Estado</td>
+                           <td class="text-center">@sortablelink('estado', 'Estado')</td>
+                           <td class="text-center">@sortablelink('eta', 'Tiempo Estimado')</td>
                            <td  class="text-center">Acciones</td>
                         </tr>
                      </thead>
@@ -44,6 +45,7 @@
                            <td>{{ $project->title }}</td>
                            <td >{{ $project->description }}</td>
                            <td><span class="{{ $project->estado }}">{{ $project->estado }}</span></td>
+                           <td>{{ $project->eta }}</td>
                            <td  class="text-center">
                               @can('project-show')
                               <a class="btn btn-info" href="{{ route('projects.show',$project->id) }}"><i class="bi bi-eye"></i> Revisar avances</a>
@@ -62,7 +64,7 @@
                         @endforeach
                      </tbody>
                   </table>
-                  <div> {{ $projects->links() }}</div>
+                  <div> {!! $projects->appends(Request::except('page'))->render() !!}</div>
                   @else
                   <p>No hay proyectos aun en la base de datos</p>
                   @endif

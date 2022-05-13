@@ -9,10 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Avance;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, Sortable;
 
 
     /**
@@ -25,7 +26,11 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    public $sortable = [
+        'name', 
+        'email',
+        'role', 
+    ];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -47,5 +52,8 @@ class User extends Authenticatable
 
             public function Avance() {
         return $this->hasMany('Avance');
+    }
+    public function HasRoles() {
+        return $this->hasMany('HasRoles');
     }
 }

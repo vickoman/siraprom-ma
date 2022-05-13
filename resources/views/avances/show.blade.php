@@ -1,5 +1,50 @@
 @extends('layouts.app')
 @section('content')
+
+<script>
+    $(document).ready(function(){
+
+        var $easyInstance = $('.pin').easypin({
+            init: $('#avance-{{$avance->id}}').val() || null,
+            modalWidth: 300,
+            markerSrc: '{{ URL::asset("images/marker.png") }}',
+            editSrc: '{{ URL::asset("images/edit.png") }}',
+            deleteSrc: '{{ URL::asset("images/remove.png") }}',
+            done: function(element) {
+                if($('input[name="content"]', element).val() != '') {
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        $easyInstance.easypin.event( "get.coordinates", function($instance, data, params ) {
+            console.log( data);
+        });
+        $( ".coords" ).click(function( event ) {
+            var  estado= $(".estado").val();
+            $easyInstance.easypin.fire( "get.coordinates", function(data) {
+                const dataToSave = JSON.stringify(data);
+                $.ajax({
+                    url: '{{ route('save_comment') }}',
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        id: '{{$avance->id}}',
+                        estado:estado,
+                        data: Object.keys(data).length > 0 ? dataToSave : null
+                    },
+                    success: function(data) {
+                        console.log(data);
+            swal("Los comentarios fueron registrados con exito", {
+                  icon: "success",
+            });
+                    }
+                });
+            });
+        });
+    });
+</script>
 <div class="container">
     <div class="row justify-content-center">
     <div class="col-md-3 rounded-3">
@@ -38,7 +83,9 @@
                         <div class="form-group">
                             <strong>Preview:</strong>
                             @if($avance->file)
-                            <div class="preview_inner" style="border: 1px solid;"><img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}" class="pin easypin-target" easypin-id="image-{{ $avance->id }}"  /></div>
+                            <div class="preview_inner" style="border: 1px solid;">
+                                <img src="<?php echo url('/'); ?>/storage/images/{{$avance->file}}" class="pin easypin-target" easypin-id="image-{{ $avance->id }}"  />
+                            </div>
                             @endif
                         </div>
                        
@@ -110,47 +157,6 @@
 
  ?>
 
-<script>
-    $(document).ready(function(){
-        var $easyInstance = $('.pin').easypin({
-            init: $('#avance-{{$avance->id}}').val() || null,
-            modalWidth: 300,
-            markerSrc: '{{ URL::asset("images/marker.png") }}',
-            editSrc: '{{ URL::asset("images/edit.png") }}',
-            deleteSrc: '{{ URL::asset("images/remove.png") }}',
-            done: function(element) {
-                if($('input[name="content"]', element).val() != '') {
-                    return true;
-                }
-                return false;
-            }
-        });
-        $easyInstance.easypin.event( "get.coordinates", function($instance, data, params ) {
-            console.log( data);
-        });
-        $( ".coords" ).click(function( event ) {
-            var  estado= $(".estado").val();
-            $easyInstance.easypin.fire( "get.coordinates", function(data) {
-                const dataToSave = JSON.stringify(data);
-                $.ajax({
-                    url: '{{ route('save_comment') }}',
-                    type: 'POST',
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        id: '{{$avance->id}}',
-                        estado:estado,
-                        data: Object.keys(data).length > 0 ? dataToSave : null
-                    },
-                    success: function(data) {
-                        console.log(data);
-            swal("Los comentarios fueron registrados con exito", {
-                  icon: "success",
-            });
-                    }
-                });
-            });
-        });
-    });
-</script>
+
 @stop
 @endsection

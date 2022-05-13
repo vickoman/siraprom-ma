@@ -25,11 +25,12 @@
 
         // hide all images
         willPinningElements.each(function(i) {
-            $(this).css('opacity', 0);
+         //   $(this).css('opacity', 0);
+         console.log("Hi there!");
         });
 
         $(this).on('load', function() {
-
+console.log("Hi there2");
             loadedImgNum += 1;
             // show loaded image
             $(this).animate(

@@ -33,8 +33,8 @@
                                 <thead>
                                     <tr>
                                         <td>ID</td>
-                                        <td>Nombre</td>
-                                        <td>Email</td>
+                                        <td>@sortablelink('name', 'Nombre')</td>
+                                        <td>@sortablelink('email', 'Email')</td>
                                         <td>Rol</td>
                                         <td class="text-center">Acciones</td>
                                     </tr>
@@ -42,7 +42,7 @@
                                 <tbody>
                                     @foreach ($data as $user)
                                         <tr>
-                                            <td>{{ $user->id }}</td>
+                                            <td>{{ ++$i }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
@@ -71,7 +71,8 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                             <div> {{ $data->links() }}</div>
+
+                             <div> {!! $data->appends(Request::except('page'))->render() !!}</div>
                         @else
                             <p>No hay users aun en la base de datos</p>
                         @endif

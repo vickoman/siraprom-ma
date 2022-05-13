@@ -24,8 +24,9 @@ class UserController extends Controller
     }
     // show index
     public function index() {
-        $data = User::paginate(10);; 
-                return view($this->path.'.index', compact('data'));
+        $data = User::sortable()->paginate(8);
+                return view($this->path.'.index', compact('data'))
+                ->with('i', (request()->input('page', 1) - 1) * 8);
     }
     // show create form
     public function create() {

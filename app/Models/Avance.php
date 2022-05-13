@@ -16,7 +16,7 @@ class Avance extends Model
         'file',
         'project_id',
     ];
-    public function project() {
+    public function Project() {
         return $this->belongsTo(Project::class);
     }
         public function User() {

@@ -30,7 +30,7 @@ class ProjectController extends Controller
     public function index()
     {
 
-        $projects = Project::latest();
+        $projects = Project::sortable()->latest();
          if(Auth::user()->hasRole('Disenador')){
               $projects=$projects->where('designer_id', Auth::user()->id);
           }
