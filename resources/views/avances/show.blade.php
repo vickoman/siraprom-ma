@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script type='text/javascript'>
+<!--<script type='text/javascript'>
 
     jQuery(document).ready(function(){
   if( window.localStorage )
@@ -17,7 +17,7 @@
   }
     });
 
-</script>
+</script> -->
 <script>
     $(document).ready(function(){
 
@@ -28,16 +28,20 @@
             editSrc: '{{ URL::asset("images/edit.png") }}',
             deleteSrc: '{{ URL::asset("images/remove.png") }}',
             done: function(element) {
+                        
                 if($('input[name="content"]', element).val() != '') {
                     return true;
                 }
                 return false;
             }
-        });
 
+        });
+        var url = $(".preview_inner img").attr("src");
+        $(".preview_inner img").attr("src", url + `?v=${new Date().getTime()}`);
         $easyInstance.easypin.event( "get.coordinates", function($instance, data, params ) {
             console.log( data);
         });
+
         $( ".coords" ).click(function( event ) {
             var  estado= $(".estado").val();
             $easyInstance.easypin.fire( "get.coordinates", function(data) {
@@ -60,6 +64,8 @@
                 });
             });
         });
+
+    console.log("Hola Mundo");
     });
 </script>
 
@@ -134,7 +140,7 @@
                             </li>
                         </ul>
                     </div>
-                    <input type="hidden" name="avance-{{$avance->id}}" id="avance-{{$avance->id}}" value="{{$avance->comentarios}}" />
+                    <input type="hidden" name="avance-{{$avance->id}}" id="avance-{{$avance->id}}" value='{{$avance->comentarios}}' />
 
                         {!! Form::close() !!}
                     </div>
