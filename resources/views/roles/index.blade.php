@@ -43,18 +43,18 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $role->name }}</td>
-                                        <td field-key='color'>{{ $role->color }}</td><td style="background:{{ $role->color }}"></td>
-                                            <td  class="text-center">
-                                            <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}"><i class="bi bi-eye"></i> Ver</a>
-                                                @can('role-edit')
-                                                    <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}"><i class="bi bi-pencil-square"></i>  Editar</a>
-                                                @endcan
-                                                @can('role-delete')
-                                                    {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                                                    <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'><i class="bi bi-trash"></i>  Borrar </button>
-                                                     <!--   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} -->
-                                                    {!! Form::close() !!}
-                                                @endcan
+                                            <td field-key='color'>{{ $role->color }}</td><td style="background:{{ $role->color }}"></td>
+                                                <td  class="text-center">
+                                                <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}"><i class="bi bi-eye"></i> Ver</a>
+                                                    @can('role-edit')
+                                                        <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}"><i class="bi bi-pencil-square"></i>  Editar</a>
+                                                    @endcan
+                                                    @can('role-delete')
+                                                        {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                                                        <button type="submit" class="btn btn-danger show_confirm {{ ($role->name == 'Super-Admin' || $role->name == 'Cliente' || $role->name == 'Disenador') ? 'disabled': null }}" data-toggle="tooltip" title='Delete'><i class="bi bi-trash"></i>  Borrar </button>
+                                                        <!--   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} -->
+                                                        {!! Form::close() !!}
+                                                    @endcan
                                             </td>
                                         </tr>
                                     @endforeach
