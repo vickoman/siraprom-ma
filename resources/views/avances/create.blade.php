@@ -44,6 +44,7 @@
                         <div class="form-group">
                             <strong>Nombre del avance:</strong>
                             {!! Form::text('name', null, array('placeholder' => 'Nombre del Avance','class' => 'form-control')) !!}
+                            {!! Form::hidden('estado', null, array('placeholder' => 'estado del avance','class' => 'form-control', 'value' => 'Nuevo')) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">

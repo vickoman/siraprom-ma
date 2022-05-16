@@ -171,7 +171,6 @@
     $(document).ready(function(){
     setTimeout(function() { 
          $(".preview_inner").addClass("blocked disenador_blocked");
-
          $(".preview_inner img").removeClass("pin easypin-target");
       });
 });

@@ -74,6 +74,7 @@ class AvanceController extends Controller
             'description' => 'required',
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
             'project_id' => 'required',
+
         ]);
         
  
@@ -83,11 +84,13 @@ class AvanceController extends Controller
               $project_id= $request->project_id;
 
         //$path = $request->file('file')->getClientOriginalName()->store('public/images');
-        $path = $request->file('file')->storeAs('public/images', time().'.jpg');
+        $namefile= time().'.jpg';
+        $path = $request->file('file')->storeAs('public/images', $namefile);
         $namefile= time().'.jpg';
         $post = new Avance;
         $post->name = $request->name;
         $post->description = $request->description;
+        $post->estado = $request->estado;
         $post->file = $namefile;
         $post->project_id = $project_id;
         $post->save();
@@ -143,13 +146,14 @@ class AvanceController extends Controller
                $file_old = $base_path.$post->file;
                unlink($file_old);
           }
-        $path = $request->file('file')->storeAs('public/images', time().'.jpg');
         $namefile= time().'.jpg';
+        $path = $request->file('file')->storeAs('public/images', $namefile);
+
         $post->file = $namefile;
 }
         $post->name = $request->name;
         $post->description = $request->description;
-        $post->estado = $request->estaod;
+        $post->estado = $request->estado;
         $post->update();
 
             return redirect()->back()->with('success','Avance actualizado correctamente');
@@ -161,15 +165,15 @@ class AvanceController extends Controller
      * @param  \App\Models\Avance  $avance
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
           try {
             $avance = Avance::findOrFail($id);
-           if($request->file != ''){     
+           if($avance->file != ''){     
           //codigo para borrar un archivo 
             $base_path='storage/images/';
-          if($post->file != ''  && $post->file != null){
-               $file_old = $base_path.$post->file;
+          if($avance->file != ''  && $avance->file != null){
+               $file_old = $base_path.$avance->file;
                unlink($file_old);
           }
       }
