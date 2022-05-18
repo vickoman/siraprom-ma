@@ -123,6 +123,7 @@
                                 <option>Seleccionar una opcion</option>
                                 <option value="Revisado" {{ $avance->estado == "Revisado" ? 'selected':'' }}>Revisado</option>
                                 <option value="Cambios Solicitados" {{ $avance->estado == "Cambios Solicitados" ? 'selected':'' }}>Solicitar Cambios</option>
+                                <option value="Proyecto Finalizado" {{ $avance->estado == "Proyecto FInalizado" ? 'selected':'' }}>Finalizar Proyecto y Solicitar Archivos Finales</option>
                             </select>
                         </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
@@ -154,7 +155,7 @@
 
 <div class="easy-modal" style="display:none;" modal-position="free">
     <form>
-        <h3 class="text-center">Escrbir comentario</h3>
+        <h3 class="text-center">Escribir comentario</h3>
         <input type="text" class="form-control" name="content" placeholder="type">
         <br>
         <button type="button" class="btn btn-primary easy-submit">Guardar comentario</button>

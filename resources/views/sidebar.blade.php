@@ -24,9 +24,9 @@
                     </li>
                     @endcan
                         @can('avance-create')
-                     <li class="{{ (request()->is('reportes')) ? 'active' : '' }}">
-                        <a href="#" class="nav-link px-3 align-middle">
-                            <i class="fs-4 bi-bar-chart-line"></i> <span class="ms-1 d-none d-sm-inline">Reportes</span></a>
+                     <li class="{{ (request()->is('indicators')) ? 'active' : '' }}">
+                        <a href="/indicators" class="nav-link px-3 align-middle">
+                            <i class="fs-4 bi-bar-chart-line"></i> <span class="ms-1 d-none d-sm-inline">Indicadores</span></a>
                     </li>
                     @endcan
                 </ul>

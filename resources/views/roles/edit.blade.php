@@ -34,10 +34,10 @@
 
                 {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12 {{ ($role->name == 'Super-Admin' || $role->name == 'Cliente' || $role->name == 'Disenador') ? 'readonly': null }}" >
                         <div class="form-group">
                             <strong>Nombre:</strong>
-                            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                            {!! Form::text('name', null, array('placeholder' => 'Name','class' => "form-control", )) !!}
                         </div>
                     </div>
                      <div class="col-xs-12 col-sm-12 col-md-12">

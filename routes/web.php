@@ -29,5 +29,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('send', App\Http\Controllers\SendController::class);
     Route::get('/send', 'App\Http\Controllers\SendController@send')->name('send');
     Route::post('/send', 'App\Http\Controllers\SendController@sendPost')->name('sendPost');
+    Route::get('/indicators', 'App\Http\Controllers\IndicatorController@indicator')->name('indicator');
 
 });

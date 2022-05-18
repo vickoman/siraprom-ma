@@ -8,6 +8,7 @@ use App\Models\Avance;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Mail;
 
 
 class AvanceController extends Controller
@@ -196,7 +197,37 @@ class AvanceController extends Controller
             $avance->comentarios = $request->data;
             $avance->estado = $request->estado;
             $avance->update();
+
+                $check_subj =$request->estado;
+
+                switch ($check_subj) {
+                    case 'Revisado':
+                        $subject= "Un cliente ha revisado y dado ok en un avance";
+                        $content="Hola disenador el cliente del proyecto ha cambiado el estado a revisado al avance ". route('projects.show',$avance->project_id);
+                        break;
+                    case 'Cambios Solicitados':
+                        $subject= "Un cliente ha solicitado cambios de un avance";
+                        $content="Hola disenador, se ha solicitado cambios en un avance, revisalo en ". route('avances.show', $request->id);
+                        break;
+                    case 'Proyecto Finalizado':
+                        $subject= "Un cliente ha solicitado finalizar el proyecto";
+                        $content="Hola disenador el cliente del proyecto ha solicitado el cierre del proyecto y ha pedido la subida de los archivos finales ". route('projects.show',$avance->project_id);
+                        break;
+                }
+                $dis=Project::where("id","=",$avance->project_id)->value('designer_id');
+                $email=User::where("id","$dis")->value('email');
+        Mail::send('email', [
+                'email' => $email,
+                'subject' => $subject,
+                'comment' => $content ],
+                function ($message) use ($email, $subject) {
+                        $message->from('dev@twm.ec', 'TWM');
+                        $message->to($email)
+                                ->subject($subject);
+
             return "saved!";
+        });
+
         } catch(Exception $e) {
             return "Fatal error - " . $e->getMessage();
         }
