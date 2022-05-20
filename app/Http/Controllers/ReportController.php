@@ -11,6 +11,8 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Auth;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
@@ -31,6 +33,9 @@ class ReportController extends Controller
         return view('report',compact('data'))->with('success', 'llegue al otro lado ya es un triunfo verdad jajaja');
 
     }
-
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
 
 }

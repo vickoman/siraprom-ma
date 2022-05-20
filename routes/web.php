@@ -33,4 +33,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/indicators', 'App\Http\Controllers\IndicatorController@indicatorPost')->name('indicatorPost');
     Route::get('/reports', 'App\Http\Controllers\ReportController@report')->name('report');
     Route::post('/reports', 'App\Http\Controllers\ReportController@reportPost')->name('reportPost');
+    Route::get('/reports/export/', 'App\Http\Controllers\ReportController@export');
 });
