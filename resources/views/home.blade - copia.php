@@ -29,8 +29,6 @@
                         </div>
                     @endif
                     <h3>Hola {{ Auth::user()->name }}</h3>
-
-                    {{$user_info}}
                 </div>
             </div>
 
@@ -38,7 +36,7 @@
 
         </div>
 
-
+        
     </div>
 </div>
 <script type="text/javascript"></script>

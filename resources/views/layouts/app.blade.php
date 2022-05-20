@@ -174,6 +174,20 @@
          format: 'yyyy-mm-dd',
          startDate: '0d'
       });
+
+          $("#startdate").datepicker({
+        todayBtn:  1,
+        autoclose: true,
+    }).on('changeDate', function (selected) {
+        var minDate = new Date(selected.date.valueOf());
+        $('#enddate').datepicker('setStartDate', minDate);
+    });
+    
+    $("#enddate").datepicker()
+        .on('changeDate', function (selected) {
+            var minDate = new Date(selected.date.valueOf());
+            $('#startdate').datepicker('setEndDate', minDate);
+        });
    </script>
    <script type='text/javascript'>
       //  Evitar click derecho

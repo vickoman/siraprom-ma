@@ -30,5 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/send', 'App\Http\Controllers\SendController@send')->name('send');
     Route::post('/send', 'App\Http\Controllers\SendController@sendPost')->name('sendPost');
     Route::get('/indicators', 'App\Http\Controllers\IndicatorController@indicator')->name('indicator');
-
+    Route::post('/indicators', 'App\Http\Controllers\IndicatorController@indicatorPost')->name('indicatorPost');
+    Route::get('/reports', 'App\Http\Controllers\ReportController@report')->name('report');
+    Route::post('/reports', 'App\Http\Controllers\ReportController@reportPost')->name('reportPost');
 });
