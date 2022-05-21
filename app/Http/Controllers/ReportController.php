@@ -23,8 +23,11 @@ class ReportController extends Controller
 
         $this->validate($request, [
                         'origen' => 'required',
+                        'fecha_inicio' => 'required_with_all:fecha_final',
+                        'fecha_final' => 'required_with_all:fecha_inicio',
                 ]);
-$fecha_inicial=$request->fecha_inicial;
+
+$fecha_inicial=$request->fecha_inicio;
 $fecha_final=$request->fecha_final;
 $origen=$request->origen;
 if ($origen=="Proyectos") {

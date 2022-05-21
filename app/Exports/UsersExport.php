@@ -22,8 +22,8 @@ class UsersExport implements FromCollection
     public function collection()
     {
         if($this->fecha_inicial){
-                $fecha_inicial = format($this->fecha_inicial);
-                $fecha_final = format($this->fecha_final);   
+            $fecha_inicial = date('Y-m-d 00:00:00', strtotime($this->fecha_inicial));
+            $fecha_final = date('Y-m-d 00:00:00', strtotime($this->fecha_final));
         return User::whereBetween('created_at', [$fecha_inicial, $fecha_final])->get();
     }
     else{

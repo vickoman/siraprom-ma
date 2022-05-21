@@ -51,13 +51,15 @@
                 </select>
                 <span class="text-danger">{{ $errors->first('origen') }}</span>
             </div>
-            <div class="col-md-3 form-group">
+            <div class="col-md-3 form-group {{ $errors->has('origen') ? 'has-error' : '' }}">
                 <label for="subject">Escoja la fecha inicial</label>
-                <input id="fecha_inicio" name="subject" type="text" class="form-control" id="fecha_inicio" aria-describedby="fecha_inicio" placeholder="Fecha Inicial">
+                <input id="fecha_inicio" name="fecha_inicio" type="text" class="form-control" id="fecha_inicio" aria-describedby="fecha_inicio" placeholder="Fecha Inicial">
+                <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
             </div>
-            <div class="col-md-3 form-group">
+            <div class="col-md-3 form-group {{ $errors->has('fecha_final') ? 'has-error' : '' }}">
                 <label for="subject">Escoja la fecha final</label>
-<input id="fecha_final" name="subject" type="text" class="form-control" id="fecha_final" aria-describedby="fecha_final" placeholder="Fecha Final">
+<input id="fecha_final" name="fecha_final" type="text" class="form-control" id="fecha_final" aria-describedby="fecha_final" placeholder="Fecha Final">
+<span class="text-danger">{{ $errors->first('fecha_final') }}</span>
             </div>
             <div class="form-group col-md-12 mt-2">
             <button type="submit" class="btn btn-primary">Descargar</button>

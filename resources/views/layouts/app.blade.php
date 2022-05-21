@@ -189,6 +189,7 @@ var today = new Date();
     $("#fecha_final").datepicker(
     {
       format: 'yyyy-mm-dd',
+
     })
         .on('changeDate', function (selected) {
             var minDate = new Date(selected.date.valueOf());
