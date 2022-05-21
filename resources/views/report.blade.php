@@ -38,31 +38,31 @@
                @endif
  
 
-        <form method="POST" action="/reports">
+        <form method="POST" action="{{ url('/reports') }}">
             @csrf
             <div class="container">
     <div class="row">
             <div class="col-md-6 form-group {{ $errors->has('origen') ? 'has-error' : '' }}">
                 <label for="origen">Escoja un origen</label>
                 <select class="form-control" name="origen">
-                    <option>Escoja una opcion</option>
-                    <option>Proyectos</option>
-                    <option>Usuarios</option>
+                    <option value="">Escoja una opcion</option>
+                    <option value="Proyectos">Proyectos</option>
+                    <option value="Usuarios">Usuarios</option>
                 </select>
                 <span class="text-danger">{{ $errors->first('origen') }}</span>
             </div>
-            <div class="col-md-3 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+            <div class="col-md-3 form-group">
                 <label for="subject">Escoja la fecha inicial</label>
-                <input id="startdate" name="subject" type="text" class="form-control datepicker" id="name" aria-describedby="name" placeholder="Fecha Inicial">
+                <input id="fecha_inicio" name="subject" type="text" class="form-control" id="fecha_inicio" aria-describedby="fecha_inicio" placeholder="Fecha Inicial">
             </div>
-            <div class="col-md-3 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+            <div class="col-md-3 form-group">
                 <label for="subject">Escoja la fecha final</label>
-<input id="enddate" name="subject" type="text" class="form-control datepicker" id="name" aria-describedby="name" placeholder="Fecha Final">
+<input id="fecha_final" name="subject" type="text" class="form-control" id="fecha_final" aria-describedby="fecha_final" placeholder="Fecha Final">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-12 mt-2">
+            <button type="submit" class="btn btn-primary">Descargar</button>
+            </div>
 
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         </div></form>
                 </div>
@@ -75,6 +75,5 @@
 
     </div>
 </div>
-<script type="text/javascript"></script>
 
 @endsection

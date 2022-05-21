@@ -175,18 +175,24 @@
          startDate: '0d'
       });
 
-          $("#startdate").datepicker({
-        todayBtn:  1,
+var today = new Date();
+          $("#fecha_inicio").datepicker({
         autoclose: true,
+          endDate : today,
+            format: 'yyyy-mm-dd',
+  todayHighlight: true
     }).on('changeDate', function (selected) {
         var minDate = new Date(selected.date.valueOf());
-        $('#enddate').datepicker('setStartDate', minDate);
+        $('#fecha_final').datepicker('setStartDate', minDate);
     });
     
-    $("#enddate").datepicker()
+    $("#fecha_final").datepicker(
+    {
+      format: 'yyyy-mm-dd',
+    })
         .on('changeDate', function (selected) {
             var minDate = new Date(selected.date.valueOf());
-            $('#startdate').datepicker('setEndDate', minDate);
+            $('#fecha_inicio').datepicker('setEndDate', minDate);
         });
    </script>
    <script type='text/javascript'>

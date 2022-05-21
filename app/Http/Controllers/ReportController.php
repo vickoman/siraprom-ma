@@ -8,34 +8,33 @@ use App\Models\Project;
 use App\Models\User;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Storage;
 use Auth;
 use App\Exports\UsersExport;
+use App\Exports\ProjectsExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
     public function report(){
-                $data = Project::sortable()->latest();
-                return view('report',compact('data'));
+                return view('report');
         } 
 
     public function reportPost(Request $request){
 
         $this->validate($request, [
-                        'origen' => 'required'
+                        'origen' => 'required',
                 ]);
-        $data = Project::sortable()->latest();
-              //  $subject =$request->subject;
+$fecha_inicial=$request->fecha_inicial;
+$fecha_final=$request->fecha_final;
+$origen=$request->origen;
+if ($origen=="Proyectos") {
+return Excel::download(new ProjectsExport($fecha_inicial,$fecha_final), 'projects.xlsx');
+}
+if ($origen=="Usuarios") {
+return Excel::download(new UsersExport($fecha_inicial,$fecha_final), 'users.xlsx');
+}
 
-
-        return view('report',compact('data'))->with('success', 'llegue al otro lado ya es un triunfo verdad jajaja');
+     //   return view('report',compact('data'))->with('success', 'llegue al otro lado ya es un triunfo verdad jajaja');
 
     }
-    public function export() 
-    {
-        return Excel::download(new UsersExport, 'users.xlsx');
-    }
-
 }
