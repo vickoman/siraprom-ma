@@ -60,6 +60,16 @@
                                             @can('user-edit')
                                             <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}"><i class="bi bi-pencil-square"></i>  Editar</a>
                                             @endcan
+
+                                            @can('user-edit')
+
+                                            @if($user->status==1)
+                                            <a class="btn btn-danger" href="{{ route('users.status.update',[ 'user_id' => $user->id, 'status_code' => 0 ]) }}"><i class="bi bi-x-circle"></i> Restringir</a>
+                                            @else
+                                            <a class="btn btn-success" href="{{ route('users.status.update',[$user->id, 'status_code'=>1]) }}"><i class="bi bi-x-circle"></i> Habilitar</a>
+                                            @endif
+
+                                            @endcan
                                             @can('user-delete')
                                             {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                                                <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'><i class="bi bi-trash"></i>  Borrar </button>

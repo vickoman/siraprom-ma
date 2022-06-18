@@ -18,6 +18,12 @@
                         Ingresa con tus credenciales para poder revisar
  los avance de los proyectos 
                     </p>
+@if (session('error'))
+   <div class="alert alert-danger">
+        {{ session('error') }}
+   </div>
+@endif
+
                 </div>
 
                 <div class="">

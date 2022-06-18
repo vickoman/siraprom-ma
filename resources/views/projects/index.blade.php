@@ -17,7 +17,7 @@
          <div class="card">
             <div class="card-header">
                <span class="mr-5">{{ __('Proyectos') }}</span>
-               <a href={{ route('projects.create')}}>Añadir nuevo proyecto</a>
+              @can('project-edit') <a href={{ route('projects.create')}}>Añadir nuevo proyecto</a>@endcan
             </div>
             <div class="card-body">
                @if ($message = Session::get('success'))

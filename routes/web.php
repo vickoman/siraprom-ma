@@ -20,9 +20,10 @@ use App\Http\Controllers\SendController;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
+
     Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::resource('users', App\Http\Controllers\UserController::class);
-   // Route::delete('users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('users/status/{user_id}/{status_code}', [App\Http\Controllers\UserController::class, 'updateStatus'])->name('users.status.update');
     Route::resource('projects', App\Http\Controllers\ProjectController::class);
     Route::resource('avances', App\Http\Controllers\AvanceController::class);
     Route::post('/avances/save-comment', 'App\Http\Controllers\AvanceController@save_comment')->name('save_comment');
@@ -34,4 +35,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/reports', 'App\Http\Controllers\ReportController@report')->name('report');
     Route::post('/reports', 'App\Http\Controllers\ReportController@reportPost')->name('reportPost');
     Route::get('/reports/export/', 'App\Http\Controllers\ReportController@export');
+    
 });

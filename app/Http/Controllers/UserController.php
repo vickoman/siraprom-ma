@@ -111,6 +111,23 @@ class UserController extends Controller
             return "Fatal error - " . $e->getMessage();
         }
     }
+    /*
+    *@param Integer $user_id
+    *@param Integer $status_code
+    */
+    public function updateStatus($user_id, $status_code){
+        try{
+            $update_user=User::whereId($user_id)->update(['status' => $status_code]);
+
+            if ($update_user) {
+                return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente');
+            }
+            return redirect()->route('users.index')->with('error', 'Fallo al actualizar el estado del usuario');
+        }
+        catch (\Throwable $th){
+            throw $th;
+        }
+    }
 }
 
 
