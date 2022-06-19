@@ -55,23 +55,23 @@
                <h2>Tiempo que se demora el cliente en revisar y pedir cambios</h2>
                <?php 
                   $arr_pr = array();
-                 foreach ($promedio as $pro1): ?>
+                 foreach ($rev_cliente as $rev1): ?>
                <?php 
-                  $earlier = new DateTime($pro1->created_at);
-                  $later = new DateTime($pro1->updated_at);
-                  $pos_diff = $earlier->diff($later)->format("%r%a"); //3
+                  $earlier = new DateTime($rev1->created_at);
+                  $later = new DateTime($rev1->updated_at);
+                  $rev_diff = $earlier->diff($later)->format("%r%a"); //3
 
-                        if(($pro1->end_date==$pro1)){ echo $nu_pr[$i].=$nu_pr[$i]+$pos_diff; };
+                        if(($rev1->end_date==$rev1)){ echo $ru_pr[$i].=$ru_pr[$i]+$rev_diff; };
                    ?>
 
-             <!--  {{$pro1->start_date}} - {{$pro1->end_date}} - {{$pro1->total}}  - {{$pos_diff}} <br>-->
+             <!--  {{$rev1->start_date}} - {{$rev1->end_date}} - {{$rev1->total}}  - {{$rev_diff}} <br>-->
                
-               <?php $arr_pr[] =$pro1->end_date;
+               <?php $arr_rev[] =$rev1->end_date;
                   endforeach; 
-                    $unique_pr = array_unique($arr_pr);
+                    $unique_rev = array_unique($arr_rev);
                       ?>
                <div class="col-xl-12 col-md-12 mb-12">
-                  <div id="columnchart_prpr" style="width: 800px; height: 500px;"></div>
+                  <div id="columnchart_rev_cli" style="width: 800px; height: 500px;"></div>
                </div>
             </div>
             <?php 
@@ -140,7 +140,7 @@
                   $fz[]=0;
        foreach ($unique_pr as $arr_pr){          
       $nu_pr[$i]=0;
-        foreach ($promedio as $pro1):
+          foreach ($promedio as $pro1):
      $earlier = new DateTime($pro1->created_at);
      $later = new DateTime($pro1->updated_at);
     $pos_diff = intval($earlier->diff($later)->format("%r%a")); //3
@@ -164,6 +164,45 @@
        chart.draw(data_pr, google.charts.Bar.convertOptions(options_pr));
      }
    
+
+   ////////////////////////////////////////////////////////////////////////////////////
+
+     google.charts.load('current', {'packages':['bar']});
+     google.charts.setOnLoadCallback(drawChart3);
+   function drawChart3() {
+       var data_pr = google.visualization.arrayToDataTable([
+         ['Mes', 'Promedio de dias que dura un proyecto por mes'],
+   <?php 
+      $i = 0;
+          $ru_pr[]=(int) 0;
+       foreach ($unique_rev as $arr_rev){          
+      $ru_pr[$i]=0;
+
+             foreach ($rev_cliente as $rev1): 
+                  $earlier = new DateTime($rev1->created_at);
+                  $later = new DateTime($rev1->updated_at);
+                  $rev_diff = $earlier->diff($later)->format("%r%a"); //3
+                        if(($rev1->end_date==$rev1)){ echo $ru_pr[$i].=$ru_pr[$i]+$rev_diff; };
+      if(($rev1->end_date==$arr_rev)){ $ru_pr[$i]=($ru_pr[$i]+$rev_diff); };
+      endforeach;
+      if($i==0){$ver=2;}else{$ver=1;}
+    $val_pr=($ru_pr[$i])/($i+$ver);
+         echo "['".$arr_rev."',".$val_pr."],";    
+      $i++;
+      }
+       ?>
+       ]);
+   
+       var options_pr = {
+         chart: {
+           title: 'Promedio x mes',
+         }
+       };
+   
+       var chart = new google.charts.Bar(document.getElementById('columnchart_rev_cli'));
+   
+       chart.draw(data_pr, google.charts.Bar.convertOptions(options_pr));
+     }
    });
 </script>
 @endsection
