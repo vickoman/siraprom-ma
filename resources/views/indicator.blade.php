@@ -28,18 +28,51 @@
                <h3>Hola {{ Auth::user()->name }}</h3>
                Aqui se mostrara los indicadores o metricas de proyectos de manera general, si desea estadisticas por fecha determinada utilice los campos de abajo <br>
                <h2>Cantidad de proyectos por mes</h2>
-               <!-- <?php foreach ($user_info1 as $useri1): ?>
-                  {{$useri1->estado}} - {{$useri1->total}}  - {{$useri1->new_date}}<br>
-                  
-                  <?php endforeach ?>-->
                <div class="col-xl-12 col-md-12 mb-12">
                   <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
                </div>
-               <br><br>
-               <?php foreach ($user_info as $useri): ?>
-               {{$useri->estado}} - {{$useri->total}} - {{$useri->new_date}} <br>
-               <?php endforeach ?>
-               <div class="col-xl-12 col-md-12 mb-12"> </div>
+               <h2>Tiempo promedio de finalizacion de un proyecto por mes </h2>
+               <?php 
+                  $arr_pr = array();
+                 foreach ($promedio as $pro1): ?>
+               <?php 
+                  $earlier = new DateTime($pro1->created_at);
+                  $later = new DateTime($pro1->updated_at);
+                  $pos_diff = $earlier->diff($later)->format("%r%a"); //3
+
+                        if(($pro1->end_date==$pro1)){ echo $nu_pr[$i].=$nu_pr[$i]+$pos_diff; };
+                   ?>
+
+             <!--  {{$pro1->start_date}} - {{$pro1->end_date}} - {{$pro1->total}}  - {{$pos_diff}} <br>-->
+               
+               <?php $arr_pr[] =$pro1->end_date;
+                  endforeach; 
+                    $unique_pr = array_unique($arr_pr);
+                      ?>
+               <div class="col-xl-12 col-md-12 mb-12">
+                  <div id="columnchart_prpr" style="width: 800px; height: 500px;"></div>
+               </div>
+               <h2>Tiempo que se demora el cliente en revisar y pedir cambios</h2>
+               <?php 
+                  $arr_pr = array();
+                 foreach ($promedio as $pro1): ?>
+               <?php 
+                  $earlier = new DateTime($pro1->created_at);
+                  $later = new DateTime($pro1->updated_at);
+                  $pos_diff = $earlier->diff($later)->format("%r%a"); //3
+
+                        if(($pro1->end_date==$pro1)){ echo $nu_pr[$i].=$nu_pr[$i]+$pos_diff; };
+                   ?>
+
+             <!--  {{$pro1->start_date}} - {{$pro1->end_date}} - {{$pro1->total}}  - {{$pos_diff}} <br>-->
+               
+               <?php $arr_pr[] =$pro1->end_date;
+                  endforeach; 
+                    $unique_pr = array_unique($arr_pr);
+                      ?>
+               <div class="col-xl-12 col-md-12 mb-12">
+                  <div id="columnchart_prpr" style="width: 800px; height: 500px;"></div>
+               </div>
             </div>
             <?php 
                $arr = array();
@@ -48,7 +81,6 @@
                    $arr[] =$useri1->new_date;
                endforeach; 
                $unique_data = array_unique($arr);
-               
                 ?>
          </div>
       </div>
@@ -56,6 +88,7 @@
 </div>
 <script type="text/javascript">
    jQuery(document).ready(function(){
+   
      google.charts.load('current', {'packages':['bar']});
      google.charts.setOnLoadCallback(drawChart);
    function drawChart() {
@@ -85,7 +118,7 @@
    
        var options = {
          chart: {
-           title: 'Test',
+           //title: 'Test',
          }
        };
    
@@ -95,117 +128,42 @@
      }
    
    
+     google.charts.load('current', {'packages':['bar']});
+     google.charts.setOnLoadCallback(drawChart2);
+   function drawChart2() {
+       var data_pr = google.visualization.arrayToDataTable([
+         ['Mes', 'Promedio de dias que dura un proyecto por mes'],
+   <?php 
+      $i = 0;
+          $nu_pr[]=(int) 0;
+              $pr[]=0;
+                  $fz[]=0;
+       foreach ($unique_pr as $arr_pr){          
+      $nu_pr[$i]=0;
+        foreach ($promedio as $pro1):
+     $earlier = new DateTime($pro1->created_at);
+     $later = new DateTime($pro1->updated_at);
+    $pos_diff = intval($earlier->diff($later)->format("%r%a")); //3
+      if(($pro1->end_date==$arr_pr)){ $nu_pr[$i]=($nu_pr[$i]+$pos_diff); };
+      endforeach;
+    $val_pr=($nu_pr[$i])/($i+2);
+         echo "['".$arr_pr."',".$val_pr."],";    
+      $i++;
+      }
+       ?>
+       ]);
+   
+       var options_pr = {
+         chart: {
+           title: 'Promedio x mes',
+         }
+       };
+   
+       var chart = new google.charts.Bar(document.getElementById('columnchart_prpr'));
+   
+       chart.draw(data_pr, google.charts.Bar.convertOptions(options_pr));
+     }
+   
    });
 </script>
-<!--<script type="text/javascript"></script>
-   <?php 
-      $arr = array();
-      $arr_n=array(); 
-      foreach ($user_info1 as $useri1): 
-          $arr[] =$useri1->new_date;
-      endforeach; 
-      $unique_data = array_unique($arr);
-       foreach ($unique_data as $arr1){
-          foreach ($user_info1 as $useri1){ 
-      if($useri1->new_date==$arr1){ 
-          if($useri1->estado=='Nuevo' ) { 
-              $arr_n[]=$useri1->new_date;
-           }else { 
-              $arr_n[]="0";
-          }
-      }
-      print_r($arr_n);
-       ?>
-   <?php
-      }
-       }
-      
-      ?>
-   
-   
-   <script type="text/javascript">
-    var projectChart = document.getElementById("projectChart");
-   
-   var projectData = {
-   
-       labels: [<?php foreach ($unique_data as $arr1): ?>"{{$arr1}}",<?php endforeach ?>],
-   
-       datasets: [
-           {
-   
-               label: 'Nuevo',
-               data: [ 
-   
-               <?php foreach ($user_info1 as $useri1): ?><?php if($useri1->estado=='Nuevo') { ?>{{$useri1->total}},<?php }else { echo "0,"; } ?><?php endforeach ?>
-               ],
-               //data: [<?php foreach ($unique_data as $arr1): ?>
-                   <?php foreach ($user_info1 as $useri1): ?><?php if($useri1->new_date==$arr1){ if($useri1->estado=='Nuevo' ) { ?>{{$useri1->total}},<?php }else { echo "0,";}} ?><?php endforeach ?>
-               <?php endforeach ?>
-               ],
-               backgroundColor: [
-                   "#3C1148",
-               ]
-           },
-           {
-   
-               label: 'En Progreso',
-               data: [<?php foreach ($user_info1 as $useri1): ?><?php if($useri1->estado=='En progreso') { ?>{{$useri1->total}},<?php }else { echo "0,"; } ?><?php endforeach ?>],
-               backgroundColor: [
-                   "#F7CE1A",
-               ]
-           },
-           {
-   
-               label: 'Finalizado',
-               data: [ <?php foreach ($user_info1 as $useri1): ?><?php if($useri1->estado=='Finalizado') { ?>{{$useri1->total}},<?php }else { echo "0,"; } ?><?php endforeach ?> ],
-               backgroundColor: [
-                   "#f00fff",
-               ]
-           }
-           ]
-   };
-   var pie2Chart = new Chart(projectChart, {
-     type: 'bar',
-     data: projectData,
-    options: {
-       responsive: true,
-    }
-   
-   
-   
-   });
-   
-   
-   
-   
-    var projectChart2 = document.getElementById("projectChart2");
-   
-   var projectData2 = {
-       labels: [
-           "Nuevo",
-           "En Progreso",
-           "Finalizado",
-   
-       ],
-       datasets: [
-           {
-   
-               label: 'Contidad de proyectos en total',
-               data: [ <?php foreach ($user_info as $useri): ?>
-                   {{$useri->total}},<?php endforeach ?> ],
-               backgroundColor: [
-                   "#3C1148",
-                   "#F7CE1A",
-                   "#ffffff",
-               ]
-           }]
-   };
-   var pie2Chart2 = new Chart(projectChart2, {
-     type: 'line',
-     data: projectData2
-   });
-   
-   
-   </script>
-   -->
 @endsection
