@@ -30,12 +30,12 @@
                   <table class="table">
                      <thead>
                         <tr>
-                           <td>#</td>
-                           <td>@sortablelink('title', 'Titulo')</td>
-                           <td>Descripcion</td>
-                           <td class="text-center">@sortablelink('estado', 'Estado')</td>
-                           <td class="text-center">@sortablelink('eta', 'Tiempo Estimado')</td>
-                           <td  class="text-center">Acciones</td>
+                           <td class="col">#</td>
+                           <td class="col-2">@sortablelink('title', 'Titulo')</td>
+                           <td class="col-3">Descripcion</td>
+                           <td class="text-center col-1">@sortablelink('estado', 'Estado')</td>
+                           <td class="text-center col-2">@sortablelink('eta', 'Tiempo Estimado')</td>
+                           <td  class="text-center col-4">Acciones</td>
                         </tr>
                      </thead>
                      <tbody>
@@ -44,8 +44,8 @@
                            <td>{{ ++$i }}</td>
                            <td>{{ $project->title }}</td>
                            <td >{{ $project->description }}</td>
-                           <td><span class="{{ $project->estado }}">{{ $project->estado }}</span></td>
-                           <td>{{ $project->eta }}</td>
+                           <td class="text-center"><span class="{{ $project->estado }}">{{ $project->estado }}</span></td>
+                           <td class="text-center">{{ date('j/m/Y', strtotime($project->eta)) }}</td>
                            <td  class="text-center">
                               @can('project-show')
                               <a class="btn btn-info" href="{{ route('projects.show',$project->id) }}"><i class="bi bi-eye"></i> Revisar avances</a>
@@ -55,7 +55,7 @@
                               @endcan
                               @can('project-delete')
                               {!! Form::open(['method' => 'DELETE','route' => ['projects.destroy', $project->id],'style'=>'display:inline']) !!}
-                              <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'><i class="bi bi-trash"></i>  Borrar </button>
+                              <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'><i class="bi bi-trash"></i> </button>
                               <!--   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} -->
                               {!! Form::close() !!}
                               @endcan
