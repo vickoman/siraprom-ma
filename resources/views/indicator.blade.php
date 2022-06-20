@@ -31,6 +31,7 @@
                <div class="col-xl-12 col-md-12 mb-12">
                   <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
                </div>
+
                <h2>Tiempo promedio de finalizacion de un proyecto por mes </h2>
                <?php 
                   $arr_pr = array();
@@ -99,11 +100,51 @@
                   $earlier = new DateTime($new_arr[0][$i]['updated_at']);
                   $later = new DateTime($new_arr[0][$i2]['created_at']);
                   $pos_diff = intval($earlier->diff($later)->format("%r%a")); //3
-                  echo $pos_diff." - " .$new_arr[0][$i]['created_at']. " - ". $new_arr[0][$i2]['project_id']."<br>";
+                //  echo $pos_diff." - " .$new_arr[0][$i]['created_at']. " - ". $new_arr[0][$i2]['project_id']."<br>";
                         }
                     $i2++;   
                                      } 
                     }
+                      ?>
+               <div class="col-xl-12 col-md-12 mb-12">
+                  <div id="columnchart_rev_dis" style="width: 800px; height: 500px;"></div>
+               </div>
+
+               <h2>Tiempo promedio  que se demora en subir el primer cambio desde que se inicia el proyecto</h2>
+               <?php 
+                /*  $arr_pr = array();
+                        $ired = 0;
+                  foreach ($primer_avance as $pra1): ?>
+               <?php 
+                  $earlier = new DateTime($pra1->created_at);
+                  $later = new DateTime($pra1->avances()->first()->created_at);
+                  $rev_diff = $earlier->diff($later)->format("%r%a"); //3
+                  
+                        if(($pra1->end_date==$pra1)){  $ru_pr[$ired].=$ru_pr[$ired]+$rev_diff; };
+                        
+                   ?>
+               {{$pra1->created_at}} - {{$pra1->avances.created_at}} - {{$pra1->total}} - {{$pra1->avance.project_id}} - {{$rev_diff}} <br> 
+               <?php $arr_rev_dis[] =$pra1->end_date;
+                  endforeach; 
+                  $new_arr[]=json_decode(json_encode($rev_dis), true);
+                    $unique_rev_dis = array_unique($arr_rev_dis);
+                  //   print_r($unique_rev_dis);
+                   // echo sizeof($rev_dis); 
+                    $i2=1;
+                    for ($i=0; $i < count($rev_dis); $i++) { 
+                        if($i2<count($rev_dis)){
+                            //echo $new_arr[0][$i]['project_id']."<br>";
+                           $val=$new_arr[0][$i2]['project_id'];
+                        if($new_arr[0][$i]['project_id']==$val){
+                        //echo $new_arr[0][$i]['created_at']."-".$new_arr[0][$i]['updated_at']."-".$new_arr[0][$i]['project_id']."<br>";
+                  $earlier = new DateTime($new_arr[0][$i]['updated_at']);
+                  $later = new DateTime($new_arr[0][$i2]['created_at']);
+                  $pos_diff = intval($earlier->diff($later)->format("%r%a")); //3
+                //  echo $pos_diff." - " .$new_arr[0][$i]['created_at']. " - ". $new_arr[0][$i2]['project_id']."<br>";
+                        }
+                    $i2++;   
+                                     } 
+                    } */
                       ?>
                <div class="col-xl-12 col-md-12 mb-12">
                   <div id="columnchart_rev_dis" style="width: 800px; height: 500px;"></div>
@@ -121,6 +162,15 @@
       </div>
    </div>
 </div>
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
    jQuery(document).ready(function(){
    

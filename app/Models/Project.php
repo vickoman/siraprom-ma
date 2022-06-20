@@ -25,6 +25,6 @@ class Project extends Model
         'eta',
     ];
         public function Avance() {
-        return $this->hasMany('Avance');
+        return $this->hasMany('App\Models\Avance');
     }
 }
