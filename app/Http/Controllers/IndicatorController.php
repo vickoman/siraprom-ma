@@ -25,6 +25,10 @@ class IndicatorController extends Controller
 ->select('created_at','updated_at', DB::raw('count(id) as `total`'),DB::raw("DATE_FORMAT(created_at, '%m-%Y') start_date"),  DB::raw("DATE_FORMAT(updated_at, '%m-%Y') end_date"),DB::raw("DATEDIFF(created_at , updated_at) as `days`"))->where('estado','=','Cambios Solicitados')
 ->groupby('created_at','updated_at','estado', 'days')->get();
 
+    $this->datos['rev_dis'] = DB::table('avances')
+->select('created_at','updated_at','project_id', DB::raw('count(id) as `total`'),DB::raw("DATE_FORMAT(created_at, '%m-%Y') start_date"),  DB::raw("DATE_FORMAT(updated_at, '%m-%Y') end_date"),DB::raw("DATEDIFF(created_at , updated_at) as `days`"))->where('estado','=','Cambios Solicitados')
+->groupby('created_at','updated_at','project_id','estado', 'days')->get();
+
                 return view('indicator', $this->datos);
         } 
 

@@ -87,7 +87,7 @@ class AvanceController extends Controller
         //$path = $request->file('file')->getClientOriginalName()->store('public/images');
         $namefile= time().'.jpg';
         $path = $request->file('file')->storeAs('public/images', $namefile);
-        $namefile= time().'.jpg';
+       // $namefile= time().'.jpg';
         $post = new Avance;
         $post->name = $request->name;
         $post->description = $request->description;
