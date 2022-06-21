@@ -39,5 +39,20 @@ class IndicatorController extends Controller
                 return view('indicator', $this->datos);
         } 
 
+        public function GetIndicadorProjectPrimerAvanceTiempoPromedio(Request $request) {
+
+            $SQL_QUERY =  <<<EOD
+                SELECT
+                    ROUND(AVG(fisrt_avance_in_days), 1) as averga_in_days
+                    FROM (SELECT DATE(p.created_at)   as project_date_started,
+                                DATEDIFF((select created_at from avances where project_id = p.id ORDER BY created_at DESC LIMIT 1),
+                                        created_at) as fisrt_avance_in_days
+                        FROM projects p) avgs;
+                EOD;
+
+            $response = \DB::select($SQL_QUERY);
+            return floatval($response[0]->averga_in_days);
+        }
+
 
 }

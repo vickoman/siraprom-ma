@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('projects', App\Http\Controllers\ProjectController::class);
     Route::resource('avances', App\Http\Controllers\AvanceController::class);
     Route::post('/avances/save-comment', 'App\Http\Controllers\AvanceController@save_comment')->name('save_comment');
+    Route::post('/indicators/tiempo-promedio-primer-avance', 'App\Http\Controllers\IndicatorController@GetIndicadorProjectPrimerAvanceTiempoPromedio')->name('tiempo_promedio_primer_avance');
     Route::resource('send', App\Http\Controllers\SendController::class);
     Route::get('/send', 'App\Http\Controllers\SendController@send')->name('send');
     Route::post('/send', 'App\Http\Controllers\SendController@sendPost')->name('sendPost');
