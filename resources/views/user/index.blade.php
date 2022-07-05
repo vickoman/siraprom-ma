@@ -34,7 +34,7 @@
                                     <tr>
                                         <td>ID</td>
                                         <td>@sortablelink('name', 'Nombre')</td>
-                                        <td>@sortablelink('email', 'Email')</td>
+                                        <td class="d-none">@sortablelink('email', 'Email')</td>
                                         <td>Rol</td>
                                         <td class="text-center">Acciones</td>
                                     </tr>
@@ -44,7 +44,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
+                                            <td class="d-none">{{ $user->email }}</td>
                                             <td>
                                             @if(!empty($user->getRoleNames()))
                                                 @foreach($user->getRoleNames() as $v)

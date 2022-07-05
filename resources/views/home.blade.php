@@ -36,7 +36,7 @@
 
 <div class="row mt-3 px-3">
 
-<div class="col-8  col-md-8 mb-4">
+<div class="col-8  col-md-8 col-xs-12 mb-4">
     <div class="row">
         <div class="bg-primary text-white p-3 mb-3">Indicadores usuarios</div>
     <!-- Total Usuarios -->
@@ -49,7 +49,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $totalUsers }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+              <i class="fa fa-users fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $totalUsersAdmin }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+              <i class="fa fa-user-circle-o fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $totalUsersDisenador }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+              <i class="fa fa-user-circle-o fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $totalUsersCliente }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+              <i class="fa fa-user-circle-o fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -114,23 +114,25 @@
 
 </div>
 
+<div class="invert row">
     <div class="col-xl-4 col-md-4 mb-4"> 
 <canvas id="projectChart" width="500" height="400"></canvas>
 </div>
-<div class="col-8  col-md-8 mb-4">
+
+<div class="col-8  col-md-8  col-xs-12  mb-4">
     <div class="row">
-                <div class="bg-success text-white p-3 mb-3">Indicadores Projects</div>
+                <div class="bg-success text-white p-3 mb-3">Indicadores Proyectos</div>
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-6 col-md-6 mb-4">
       <div class="card border-left-info shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Total Proyectos </div>
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Proyectos Totales</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $totalProjects }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              <i class="fa fa-cubes fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -147,7 +149,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $ProyectosNuevos }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              <i class="fa fa-cube fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -164,7 +166,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $ProyectosProgreso }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              <i class="fa fa-cube fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -181,7 +183,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $ProyectosFinal }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              <i class="fa fa-cube fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -190,10 +192,10 @@
 
   </div>
 </div>
+</div>
 
 
-
-<div class="col-8  col-md-8 mb-4">
+<div class="col-8  col-md-8 mb-4  col-xs-12 ">
     <div class="row">
                         <div class="bg-warning text-white p-3 mb-3">Indicadores Avances</div>
 
@@ -207,7 +209,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $totalAvance }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              <i class="fa fa-puzzle-piece fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -224,7 +226,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $AvancesNuevos }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              <i class="fa fa-puzzle-piece fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -241,7 +243,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $AvancesRevisados }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              <i class="fa fa-puzzle-piece fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -258,7 +260,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $AvancesCambios }} </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              <i class="fa fa-puzzle-piece fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>

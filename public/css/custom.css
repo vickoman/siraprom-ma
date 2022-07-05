@@ -17,6 +17,7 @@ body{
 height: 80vh;
 text-align: center;
 }
+
 .bg_login form{
   text-align: left;
 }
@@ -210,5 +211,71 @@ box-shadow: rgba(247, 206, 26,.6) 6px 6px 5px 0px !important;
 
 .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
   max-width: 1360px;
+}
+}
+
+@media screen and (max-width: 1024px){
+    .container-md, .container-sm, .container {
+  max-width: 100% !important;
+}
+  #app {
+  padding: 20px 1% !important;
+}
+.h_80.container.d-flex.align-items-center{
+  max-width: 100%;
+}
+.h_80.container.d-flex.align-items-center>.row{
+margin-left: 0;
+  }
+}
+@media screen and (min-width: 768px){
+  body .d-none{
+    display: initial !important;
+  }
+}
+@media screen and (max-width: 768px){
+  .invert.row {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 60px 0;
+}
+.sidebar {
+  margin-bottom: 20px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.col-md-3 .container-fluid{
+  padding-right: 0;
+}
+  .min-vh-100 {
+  min-height: auto !important;
+  position: relative;
+  
+}
+  .container-md, .container-sm, .container {
+  max-width: 100% !important;
+}
+  .h_80.container.d-flex.align-items-center {
+  height: auto;
+}
+.bg_login {
+  padding: 50px 3%;
+  height: auto;
+}
+.login_left img {
+  width: 150px;
+}
+.login_left {
+  text-align: center;
+  padding: 30px;
+}
+}
+
+@media screen and (max-width: 680px){
+.col-8.col-md-8.col-xs-12.mb-4 {
+  width: 100%;
+}
+.col-xs-12 .col-md-6.mb-4 {
+  width: 50%;
 }
 }

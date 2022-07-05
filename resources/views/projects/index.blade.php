@@ -30,22 +30,22 @@
                   <table class="table">
                      <thead>
                         <tr>
-                           <td class="col">#</td>
+                           <td class="col d-none">#</td>
                            <td class="col-2">@sortablelink('title', 'Titulo')</td>
-                           <td class="col-3">Descripcion</td>
+                           <td class="col-3 d-none">Descripcion</td>
                            <td class="text-center col-1">@sortablelink('estado', 'Estado')</td>
-                           <td class="text-center col-2">@sortablelink('eta', 'Tiempo Estimado')</td>
+                           <td class="text-center col-2 d-none">@sortablelink('eta', 'Tiempo Estimado')</td>
                            <td  class="text-center col-4">Acciones</td>
                         </tr>
                      </thead>
                      <tbody>
                         @foreach ($projects as $key => $project)
                         <tr>
-                           <td>{{ ++$i }}</td>
+                           <td class="d-none">{{ ++$i }}</td>
                            <td>{{ $project->title }}</td>
-                           <td >{{ $project->description }}</td>
+                           <td class="d-none">{{ $project->description }}</td>
                            <td class="text-center"><span class="{{ $project->estado }}">{{ $project->estado }}</span></td>
-                           <td class="text-center">{{ date('j/m/Y', strtotime($project->eta)) }}</td>
+                           <td class="text-center d-none">{{ date('j/m/Y', strtotime($project->eta)) }}</td>
                            <td  class="text-center">
                               @can('project-show')
                               <a class="btn btn-info" href="{{ route('projects.show',$project->id) }}"><i class="bi bi-eye"></i> Revisar avances</a>
