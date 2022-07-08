@@ -19,6 +19,27 @@
 
 </script> -->
 <script>
+$(document).ready(function () {
+    
+    $( ".easy-edit" ).click(function( event ) {
+  var $input = $('.easy-modal input.form-control'),
+        $register = $('.easy-modal .easy-submit');
+  $input.keyup(function () {
+    var disable = false;
+
+    $input.each(function () {
+      if (!$(this).val()) {
+        disable = true; 
+        // terminate the .each loop
+        return false;
+      }
+    });
+
+    $register.prop('disabled', disable);
+  });
+
+});
+});
     $(document).ready(function(){
 
         var $easyInstance = $('.pin').easypin({
@@ -65,7 +86,6 @@
             });
         });
 
-    console.log("Hola Mundo");
     });
 </script>
 

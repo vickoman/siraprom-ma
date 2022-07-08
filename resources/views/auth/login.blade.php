@@ -6,7 +6,7 @@
     <div class="row justify-content-center col-12">
         <div class="col-md-6 login_left d-flex align-items-center">
             <div class="col-12">
-                <img src="https://twm.ec/wp-content/uploads/2021/11/LOGOWEB-01.png">
+                <img src="https://twm.ec/wp-content/uploads/2021/11/LOGOWEB-01.png" alt="Logo TWM">
                 <h2>SIREPROM</h2>
                 <h4>Sistema de Registro de Proyectos Multimedia</h4>
 </div>

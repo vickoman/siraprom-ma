@@ -15,6 +15,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
+
+    function __construct(){
+        $this->middleware('permission:mostrar-reportes', ['only' => ['report','reportPost']]);
+    }
+
     public function report(){
                 return view('report');
         } 

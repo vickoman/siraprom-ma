@@ -232,6 +232,9 @@ margin-left: 0;
   body .d-none{
     display: initial !important;
   }
+    body td.d-none{
+    display: table-cell !important;
+  }
 }
 @media screen and (max-width: 768px){
   .invert.row {

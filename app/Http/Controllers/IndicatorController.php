@@ -6,17 +6,21 @@ use App\Models\Project;
 use App\Models\Avance;
 class IndicatorController extends Controller
 {
+
+                function __construct(){
+        $this->middleware('permission:mostrar-indicadores', ['only' => ['indicator']]);
+    }
     public function indicator(Request $request)
     {
+
+
+
         if ($request->isMethod('post'))
         {
             $this->validate($request, ['fecha_inicio' => 'required_with_all:fecha_final', 'fecha_final' => 'required_with_all:fecha_inicio', ]);
             $fecha_inicial = date('Y-m-d 00:00:00', strtotime($request->fecha_inicio));
             $fecha_final = date('Y-m-d 00:00:00', strtotime($request->fecha_final));
         }
-
-
-
 
 
         $this->datos['user_info1'] = DB::table('projects')

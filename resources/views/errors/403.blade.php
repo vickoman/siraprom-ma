@@ -27,7 +27,7 @@
                         </div>
                     @endif
                     <h3>
-                        No tiene permismo para ingresar a esta seccion
+                        No tiene permiso para ingresar a esta seccion
                     </h3>
                 </div>
             </div>

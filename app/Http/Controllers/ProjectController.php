@@ -86,11 +86,17 @@ if($request->has('final_file')){
 
     public function show($id)
     {
+
         $project = Project::find($id);
+
+        if ((Auth::user()->id==$project->designer_id) or (Auth::user()->id==$project->client_id)){
         $designer = User::find($project->designer_id);
         $client = User::find($project->client_id);
         $avances = Avance::where("project_id","=",$id) ->orderByDesc('created_at')->paginate(20);
         return view($this->path.'.show',compact('project','designer','client', 'avances'));
+    } else {
+            abort(403);
+        }
     }
 
     public function edit($id)
