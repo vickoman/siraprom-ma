@@ -8,12 +8,12 @@
             <div class="col-12">
                 <img src="https://twm.ec/wp-content/uploads/2021/11/LOGOWEB-01.png" alt="Logo TWM">
                 <h1>SIREPROM</h1>
-                <h4>Sistema de Registro de Proyectos Multimedia</h4>
+                <h3>Sistema de Registro de Proyectos Multimedia</h3>
 </div>
         </div>
         <div class="col-md-6 bg_login d-flex align-items-center">
             <div class=" container_form align-middle col-12">
-                <div class=""><h3>{{ __('Login') }}</h3>
+                <div class=""><h2>{{ __('Login') }}</h2>
                     <p>
                         Ingresa con tus credenciales para poder revisar
  los avance de los proyectos 
