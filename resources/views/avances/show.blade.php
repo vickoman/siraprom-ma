@@ -143,12 +143,13 @@ $(document).ready(function () {
                                 <option>Seleccionar una opcion</option>
                                 <option value="Revisado" {{ $avance->estado == "Revisado" ? 'selected':'' }}>Revisado</option>
                                 <option value="Cambios Solicitados" {{ $avance->estado == "Cambios Solicitados" ? 'selected':'' }}>Solicitar Cambios</option>
-                                <option value="Proyecto Finalizado" {{ $avance->estado == "Proyecto FInalizado" ? 'selected':'' }}>Finalizar Proyecto y Solicitar Archivos Finales</option>
+                                <option value="Proyecto Finalizado" {{ $avance->estado == "Proyecto Finalizado" ? 'selected':'' }}>Finalizar Proyecto y Solicitar Archivos Finales</option>
                             </select>
                         </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                         <input class="coords btn  btn-primary btn_rev" type="button" value="Indicar revisado y Ok" />
                          <input class="coords btn  btn-primary btn_com" type="button" value="Guardar comentarios" />
+                         <input class="coords btn  btn-primary btn_fin" type="button" value="Finalizar proyecto" />
                     </div>
                     <div class="alert alert-success mt-3">
                         <strong>Nota:</strong>

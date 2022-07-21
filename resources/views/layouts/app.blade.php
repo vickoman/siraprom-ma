@@ -136,11 +136,22 @@
          $(".preview_inner img").removeClass("pin easypin-target");
       });
          $(".form_check .btn_com").hide();
+         $(".form_check .btn_fin").hide();
+      }
+         if($(".form_check select").val() == "Proyecto Finalizado"){
+         $(".form_check .btn_fin").show();
+             setTimeout(function() { 
+         $(".preview_inner").addClass("blocked");
+         $(".preview_inner img").removeClass("pin easypin-target");
+      });
+         $(".form_check .btn_com").hide();
+         $(".form_check .btn_rev").hide();
       }
       if($(".form_check select").val() == "Cambios Solicitados"){
          $(".preview_inner").removeClass("blocked");
          $(".preview_inner img").addClass("pin easypin-target");
          $(".form_check .btn_rev").hide();
+         $(".form_check .btn_fin").hide();
          $(".form_check .btn_com").show();
       }
       }

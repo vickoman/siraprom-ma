@@ -109,7 +109,7 @@ class AvanceController extends Controller
     {
         $avance = Avance::find($id);
     $project_parent = Project::find($avance->project_id);
-        if ((Auth::user()->id==$project_parent->designer_id) or (Auth::user()->id==$project_parent->client_id)){
+        if ((Auth::user()->id==$project_parent->designer_id) or (Auth::user()->id==$project_parent->client_id)or (Auth::user()->hasRole('Super-Admin'))){
         return view($this->path.'.show',compact('avance'));
     }else {
             abort(403);

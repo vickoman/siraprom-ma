@@ -66,7 +66,7 @@
                      @endcan
                      @else
                      @if (!isset($data->file))
-                     <a class="btn btn-primary" href="<?php echo url('/'); ?>/storage/zips/{{$project->final_file}}" ><i class="bi bi-pencil-square"></i>  Descargar Archivo</a>
+                  <a class="btn btn-primary" href="<?php echo url('/'); ?>/storage/zips/{{$project->final_file}}" > <i class="bi bi-pencil-square"></i>  Descargar Archivo</a>
                      @else
                      <p>Aun no hay un archivo final para descargar </p>
                      @endif

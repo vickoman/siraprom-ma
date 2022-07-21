@@ -73,7 +73,7 @@
                   
                         if(($pro1->end_date==$pro1)){ echo $nu_pr[$i].=$nu_pr[$i]+$pos_diff; };
                    ?>
-               {{$pro1->created_at}} - {{$pro1->updated_at}} - {{$pro1->total}}  - {{$pos_diff}} <br>
+             <!--  {{$pro1->created_at}} - {{$pro1->updated_at}} - {{$pro1->total}}  - {{$pos_diff}} <br> -->
                <?php $arr_pr[] =$pro1->end_date;
                   endforeach; 
                     $unique_pr = array_unique($arr_pr);
@@ -100,7 +100,7 @@
                   
                         if(($rev1->end_date==$rev1)){ echo $ru_pr[$i].=$ru_pr[$i]+$rev_diff; };
                    ?>
-               {{$rev1->created_at}} - {{$rev1->updated_at}}  - {{$rev_diff}} <br>
+              <!-- {{$rev1->created_at}} - {{$rev1->updated_at}}  - {{$rev_diff}} <br> -->
                <?php $arr_rev[] =$rev1->end_date;
                   endforeach; 
                     $unique_rev = array_unique($arr_rev);
@@ -129,7 +129,7 @@
                         if(($red1->end_date==$red1)){  $ru_pr[$ired].=$ru_pr[$ired]+$rev_diff; };
                         
                    ?>
-               {{$red1->created_at}} - {{$red1->updated_at}} - {{$red1->total}} - {{$red1->project_id}} - {{$rev_diff}} <br> 
+              <!-- {{$red1->created_at}} - {{$red1->updated_at}} - {{$red1->total}} - {{$red1->project_id}} - {{$rev_diff}} <br> -->
                <?php $arr_rev_dis[] =$red1->end_date;
                   endforeach; 
                   $new_arr[]=json_decode(json_encode($rev_dis), true);
@@ -184,7 +184,7 @@
 
                </div>
                <!--------------------------------->
-               <h2>Numero de cambios solicitados en el tiempo de desarrollo de proyecto</h2>
+               <h2>Numero de cambios solicitados por mes durante el desarrollo de los proyectos</h2>
                <?php 
                   $arr_com = array();
                   $in=0;

@@ -59,7 +59,7 @@ class ProjectController extends Controller
             'client_id' => 'required',
             'designer_id' => 'required',
             'estado' => 'required',
-            'final_file' => 'nullable|file|mimes:zip|max:4096',
+            'final_file' => 'file|mimes:zip|max:4096',
         ]);
         $project=new Project();
         $project->title = $request->title;
@@ -89,7 +89,7 @@ if($request->has('final_file')){
 
         $project = Project::find($id);
 
-        if ((Auth::user()->id==$project->designer_id) or (Auth::user()->id==$project->client_id)){
+        if ((Auth::user()->id==$project->designer_id) or (Auth::user()->id==$project->client_id) or (Auth::user()->hasRole('Super-Admin'))){
         $designer = User::find($project->designer_id);
         $client = User::find($project->client_id);
         $avances = Avance::where("project_id","=",$id) ->orderByDesc('created_at')->paginate(20);
@@ -120,7 +120,7 @@ if($request->has('final_file')){
             'client_id' => 'required',
             'designer_id' => 'required',
             'estado' => 'required',
-            'final_file' => 'nullable|mimes:zip|max:4096',
+            'final_file' => 'file|mimes:zip|max:4096',
         ]);
 
         $project = Project::find($id);
@@ -129,6 +129,7 @@ if($request->has('final_file')){
         $img_name= "proyecto_".$id.".zip";
         $path = Storage::putFileAs('public/zips', request()->file('final_file'), $img_name);
         $request->final_file=$img_name;
+        $project->final_file = $img_name;
 }
 //        $project->update($request->all());
 
@@ -139,6 +140,7 @@ if($request->has('final_file')){
         $project->client_id = $request->client_id;
         $project->designer_id = $request->designer_id;
         $project->estado = $request->estado;
+
         $project->update();
 
         return redirect()->route($this->path.'.index')
