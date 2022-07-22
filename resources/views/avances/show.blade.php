@@ -74,7 +74,8 @@ $(document).ready(function () {
                         "_token": "{{ csrf_token() }}",
                         id: '{{$avance->id}}',
                         estado:estado,
-                        data: Object.keys(data).length > 0 ? dataToSave : null
+                        data: dataToSave
+
                     },
                     success: function(data) {
                         console.log(data);
