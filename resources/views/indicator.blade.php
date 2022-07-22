@@ -217,7 +217,7 @@
    /*
       // Get Indicator from ajax
       $.ajax({
-         url: '{{ route('tiempo_promedio_primer_avance') }}',
+         url: '{{ }}',
          type: 'POST',
          data: {
             "_token": "{{ csrf_token() }}",
