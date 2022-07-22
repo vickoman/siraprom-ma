@@ -217,7 +217,7 @@
    /*
       // Get Indicator from ajax
       $.ajax({
-         url: '{{ }}',
+         url: '',
          type: 'POST',
          data: {
             "_token": "{{ csrf_token() }}",
